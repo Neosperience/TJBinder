@@ -14,24 +14,14 @@
 		1B685E5318E6DC7A005BF4BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B685E5218E6DC7A005BF4BF /* main.m */; };
 		1B685E5718E6DC7A005BF4BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B685E5618E6DC7A005BF4BF /* AppDelegate.m */; };
 		1B685E5A18E6DC7A005BF4BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B685E5818E6DC7A005BF4BF /* Main.storyboard */; };
-		1B685E5D18E6DC7A005BF4BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B685E5C18E6DC7A005BF4BF /* ViewController.m */; };
 		1B685E5F18E6DC7A005BF4BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B685E5E18E6DC7A005BF4BF /* Images.xcassets */; };
-		1B685E6618E6DC7A005BF4BF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B685E6518E6DC7A005BF4BF /* XCTest.framework */; };
-		1B685E6718E6DC7A005BF4BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B685E4618E6DC7A005BF4BF /* Foundation.framework */; };
-		1B685E6818E6DC7A005BF4BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B685E4A18E6DC7A005BF4BF /* UIKit.framework */; };
-		1B685E7018E6DC7A005BF4BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B685E6E18E6DC7A005BF4BF /* InfoPlist.strings */; };
-		1B685E7218E6DC7A005BF4BF /* HelloBindTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B685E7118E6DC7A005BF4BF /* HelloBindTests.m */; };
+		1B685E9818E6DE99005BF4BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B685E9618E6DE99005BF4BF /* ViewController.m */; };
+		1B81052F18E6F41200014234 /* Counter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81052E18E6F41200014234 /* Counter.m */; };
+		1B81053918E9619600014234 /* BindProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81053518E9619600014234 /* BindProxy.m */; };
+		1B81053A18E9619600014234 /* UIView+Bind.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81053718E9619600014234 /* UIView+Bind.m */; };
+		1B81053D18E961DD00014234 /* NSObject+FTKDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81053C18E961DD00014234 /* NSObject+FTKDataObject.m */; };
+		1B81054018E9624B00014234 /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81053F18E9624B00014234 /* UIColor+Random.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1B685E6918E6DC7A005BF4BF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B685E3B18E6DC7A005BF4BF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1B685E4218E6DC7A005BF4BF;
-			remoteInfo = HelloBind;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1B685E4318E6DC7A005BF4BF /* HelloBind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloBind.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,14 +35,20 @@
 		1B685E5518E6DC7A005BF4BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1B685E5618E6DC7A005BF4BF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1B685E5918E6DC7A005BF4BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1B685E5B18E6DC7A005BF4BF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1B685E5C18E6DC7A005BF4BF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1B685E5E18E6DC7A005BF4BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1B685E6418E6DC7A005BF4BF /* HelloBindTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloBindTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B685E6518E6DC7A005BF4BF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		1B685E6D18E6DC7A005BF4BF /* HelloBindTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloBindTests-Info.plist"; sourceTree = "<group>"; };
-		1B685E6F18E6DC7A005BF4BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1B685E7118E6DC7A005BF4BF /* HelloBindTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloBindTests.m; sourceTree = "<group>"; };
+		1B685E9518E6DE99005BF4BF /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1B685E9618E6DE99005BF4BF /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1B81052D18E6F41200014234 /* Counter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Counter.h; sourceTree = "<group>"; };
+		1B81052E18E6F41200014234 /* Counter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Counter.m; sourceTree = "<group>"; };
+		1B81053418E9619600014234 /* BindProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindProxy.h; sourceTree = "<group>"; };
+		1B81053518E9619600014234 /* BindProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindProxy.m; sourceTree = "<group>"; };
+		1B81053618E9619600014234 /* UIView+Bind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Bind.h"; sourceTree = "<group>"; };
+		1B81053718E9619600014234 /* UIView+Bind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Bind.m"; sourceTree = "<group>"; };
+		1B81053B18E961DD00014234 /* NSObject+FTKDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FTKDataObject.h"; sourceTree = "<group>"; };
+		1B81053C18E961DD00014234 /* NSObject+FTKDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FTKDataObject.m"; sourceTree = "<group>"; };
+		1B81053E18E9624B00014234 /* UIColor+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Random.h"; sourceTree = "<group>"; };
+		1B81053F18E9624B00014234 /* UIColor+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Random.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,24 +62,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1B685E6118E6DC7A005BF4BF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B685E6618E6DC7A005BF4BF /* XCTest.framework in Frameworks */,
-				1B685E6818E6DC7A005BF4BF /* UIKit.framework in Frameworks */,
-				1B685E6718E6DC7A005BF4BF /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1B685E3A18E6DC7A005BF4BF = {
 			isa = PBXGroup;
 			children = (
+				1B81053318E9619600014234 /* Binder */,
 				1B685E4C18E6DC7A005BF4BF /* HelloBind */,
-				1B685E6B18E6DC7A005BF4BF /* HelloBindTests */,
 				1B685E4518E6DC7A005BF4BF /* Frameworks */,
 				1B685E4418E6DC7A005BF4BF /* Products */,
 			);
@@ -93,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				1B685E4318E6DC7A005BF4BF /* HelloBind.app */,
-				1B685E6418E6DC7A005BF4BF /* HelloBindTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,9 +99,13 @@
 			children = (
 				1B685E5518E6DC7A005BF4BF /* AppDelegate.h */,
 				1B685E5618E6DC7A005BF4BF /* AppDelegate.m */,
+				1B685E9518E6DE99005BF4BF /* ViewController.h */,
+				1B685E9618E6DE99005BF4BF /* ViewController.m */,
+				1B81052D18E6F41200014234 /* Counter.h */,
+				1B81052E18E6F41200014234 /* Counter.m */,
+				1B81053E18E9624B00014234 /* UIColor+Random.h */,
+				1B81053F18E9624B00014234 /* UIColor+Random.m */,
 				1B685E5818E6DC7A005BF4BF /* Main.storyboard */,
-				1B685E5B18E6DC7A005BF4BF /* ViewController.h */,
-				1B685E5C18E6DC7A005BF4BF /* ViewController.m */,
 				1B685E5E18E6DC7A005BF4BF /* Images.xcassets */,
 				1B685E4D18E6DC7A005BF4BF /* Supporting Files */,
 			);
@@ -134,22 +123,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1B685E6B18E6DC7A005BF4BF /* HelloBindTests */ = {
+		1B81053318E9619600014234 /* Binder */ = {
 			isa = PBXGroup;
 			children = (
-				1B685E7118E6DC7A005BF4BF /* HelloBindTests.m */,
-				1B685E6C18E6DC7A005BF4BF /* Supporting Files */,
+				1B81053418E9619600014234 /* BindProxy.h */,
+				1B81053518E9619600014234 /* BindProxy.m */,
+				1B81053618E9619600014234 /* UIView+Bind.h */,
+				1B81053718E9619600014234 /* UIView+Bind.m */,
+				1B81053818E9619600014234 /* Utils */,
 			);
-			path = HelloBindTests;
+			path = Binder;
 			sourceTree = "<group>";
 		};
-		1B685E6C18E6DC7A005BF4BF /* Supporting Files */ = {
+		1B81053818E9619600014234 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1B685E6D18E6DC7A005BF4BF /* HelloBindTests-Info.plist */,
-				1B685E6E18E6DC7A005BF4BF /* InfoPlist.strings */,
+				1B81053B18E961DD00014234 /* NSObject+FTKDataObject.h */,
+				1B81053C18E961DD00014234 /* NSObject+FTKDataObject.m */,
 			);
-			name = "Supporting Files";
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,24 +164,6 @@
 			productReference = 1B685E4318E6DC7A005BF4BF /* HelloBind.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1B685E6318E6DC7A005BF4BF /* HelloBindTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1B685E7818E6DC7A005BF4BF /* Build configuration list for PBXNativeTarget "HelloBindTests" */;
-			buildPhases = (
-				1B685E6018E6DC7A005BF4BF /* Sources */,
-				1B685E6118E6DC7A005BF4BF /* Frameworks */,
-				1B685E6218E6DC7A005BF4BF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1B685E6A18E6DC7A005BF4BF /* PBXTargetDependency */,
-			);
-			name = HelloBindTests;
-			productName = HelloBindTests;
-			productReference = 1B685E6418E6DC7A005BF4BF /* HelloBindTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -198,11 +172,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Neosperience SpA";
-				TargetAttributes = {
-					1B685E6318E6DC7A005BF4BF = {
-						TestTargetID = 1B685E4218E6DC7A005BF4BF;
-					};
-				};
 			};
 			buildConfigurationList = 1B685E3E18E6DC7A005BF4BF /* Build configuration list for PBXProject "HelloBind" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -218,7 +187,6 @@
 			projectRoot = "";
 			targets = (
 				1B685E4218E6DC7A005BF4BF /* HelloBind */,
-				1B685E6318E6DC7A005BF4BF /* HelloBindTests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,14 +202,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1B685E6218E6DC7A005BF4BF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B685E7018E6DC7A005BF4BF /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -249,29 +209,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B685E5D18E6DC7A005BF4BF /* ViewController.m in Sources */,
+				1B81053918E9619600014234 /* BindProxy.m in Sources */,
 				1B685E5718E6DC7A005BF4BF /* AppDelegate.m in Sources */,
+				1B81053D18E961DD00014234 /* NSObject+FTKDataObject.m in Sources */,
+				1B81052F18E6F41200014234 /* Counter.m in Sources */,
+				1B81054018E9624B00014234 /* UIColor+Random.m in Sources */,
+				1B685E9818E6DE99005BF4BF /* ViewController.m in Sources */,
+				1B81053A18E9619600014234 /* UIView+Bind.m in Sources */,
 				1B685E5318E6DC7A005BF4BF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1B685E6018E6DC7A005BF4BF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B685E7218E6DC7A005BF4BF /* HelloBindTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1B685E6A18E6DC7A005BF4BF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1B685E4218E6DC7A005BF4BF /* HelloBind */;
-			targetProxy = 1B685E6918E6DC7A005BF4BF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1B685E4F18E6DC7A005BF4BF /* InfoPlist.strings */ = {
@@ -288,14 +237,6 @@
 				1B685E5918E6DC7A005BF4BF /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1B685E6E18E6DC7A005BF4BF /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B685E6F18E6DC7A005BF4BF /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -379,6 +320,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloBind/HelloBind-Prefix.pch";
 				INFOPLIST_FILE = "HelloBind/HelloBind-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -392,48 +334,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HelloBind/HelloBind-Prefix.pch";
 				INFOPLIST_FILE = "HelloBind/HelloBind-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		1B685E7918E6DC7A005BF4BF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloBind.app/HelloBind";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HelloBind/HelloBind-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "HelloBindTests/HelloBindTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		1B685E7A18E6DC7A005BF4BF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloBind.app/HelloBind";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HelloBind/HelloBind-Prefix.pch";
-				INFOPLIST_FILE = "HelloBindTests/HelloBindTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -456,14 +359,7 @@
 				1B685E7718E6DC7A005BF4BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		1B685E7818E6DC7A005BF4BF /* Build configuration list for PBXNativeTarget "HelloBindTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1B685E7918E6DC7A005BF4BF /* Debug */,
-				1B685E7A18E6DC7A005BF4BF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

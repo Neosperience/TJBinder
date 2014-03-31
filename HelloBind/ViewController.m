@@ -1,29 +1,21 @@
 //
-//  ViewController.m
-//  HelloBind
+//  ArrayTableViewController.m
+//  HelloRSSReader
 //
-//  Created by Janos Tolgyesi on 29/03/14.
+//  Created by Janos Tolgyesi on 25/03/14.
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
 #import "ViewController.h"
-
-@interface ViewController ()
-
-@end
+#import "NSObject+FTKDataObject.h"
+#import "Counter.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.view.dataObject = [Counter new];
 }
 
 @end
