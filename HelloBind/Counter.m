@@ -35,6 +35,11 @@
     [self scheduleIncrement];
 }
 
+-(void)dealloc
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(incrementCounter) object:nil];
+}
+
 -(NSString *)counterString
 {
     return [@(self.counter) stringValue];

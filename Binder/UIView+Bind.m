@@ -37,4 +37,9 @@
     self.bindTo.dataObject = dataObject;
 }
 
+-(NSString *)shortDescription
+{
+    return [NSString stringWithFormat:@"<%@: %p>", [self class], self];
+}
+
 @end

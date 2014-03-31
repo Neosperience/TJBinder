@@ -14,4 +14,6 @@
 
 @property (readonly) BindProxy* bindTo;
 
+-(NSString*)shortDescription;
+
 @end

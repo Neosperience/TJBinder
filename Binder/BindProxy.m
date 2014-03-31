@@ -15,6 +15,7 @@
 @property (strong) NSString* dataObjectKey;
 @property (strong) NSString* viewKey;
 @property (weak) UIView* view;
+@property (assign) BOOL registered;
 
 -(instancetype)initWithDataObjectKey:(NSString*)dataObjectKey viewKey:(NSString*)viewKey view:(UIView*)view;
 
@@ -31,6 +32,12 @@
         self.view = view;
     }
     return self;
+}
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ view: %@, dataObjectKey: %@, viewKey: %@, registered: %@",
+            [super description], [self.view shortDescription], self.dataObjectKey, self.viewKey, self.registered ? @"YES" : @"NO"];
 }
 
 @end
@@ -71,16 +78,37 @@
     [self registerBindings];
 }
 
+-(void)dealloc
+{
+    [self unregisterBindings];
+}
+
 -(void)unregisterBindings
 {
-    // TODO
+    for (BindEntry* entry in self.bindings)
+    {
+        if (entry.registered)
+        {
+            NSLog(@"dataObject: %@ unregistering entry: %@", self.dataObject, entry);
+            [self.dataObject removeObserver:self forKeyPath:entry.dataObjectKey context:(__bridge void *)(entry)];
+            entry.registered = NO;
+        }
+        else
+        {
+            NSLog(@"dataObject: %@ NOT unregistering entry: %@", self.dataObject, entry);
+        }
+    }
 }
 
 -(void)registerBindings
 {
+    if (!self.dataObject) return;
+
     for (BindEntry* entry in self.bindings)
     {
-        [self.view.dataObject addObserver:self forKeyPath:entry.dataObjectKey options:NSKeyValueObservingOptionNew context:(__bridge void *)(entry)];
+        [self.dataObject addObserver:self forKeyPath:entry.dataObjectKey options:NSKeyValueObservingOptionNew context:(__bridge void *)(entry)];
+        entry.registered = YES;
+        NSLog(@"dataObject: %@ registered entry: { %@ }", self.dataObject, entry);
         [self updateViewForBindingEntry:entry];
     }
 }
@@ -112,20 +140,20 @@
 
 -(void)updateViewForBindingEntry:(BindEntry*)entry
 {
-    id extractedValue = [self.view.dataObject valueForKey:entry.dataObjectKey];
+    id extractedValue = [self.dataObject valueForKey:entry.dataObjectKey];
     [entry.view setValue:extractedValue forKey:entry.viewKey];
 }
 
 -(id)valueForUndefinedKey:(NSString *)key
 {
-    NSLog(@"%s %@", __PRETTY_FUNCTION__, key);
+//    NSLog(@"%s %@", __PRETTY_FUNCTION__, key);
     [self.dataObjectKeyPath addObject:key];
     return self;
 }
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    NSLog(@"%s { %@ : %@ } \n%@", __PRETTY_FUNCTION__, key, value, self.dataObjectKeyPath);
+//    NSLog(@"%s { %@ : %@ } \n%@", __PRETTY_FUNCTION__, key, value, self.dataObjectKeyPath);
     [self flushBindingPathForDataObjectKey:key viewKey:value];
 }
 
@@ -133,6 +161,12 @@
 {
     BindEntry* entry = (__bridge BindEntry*)context;
     [self updateViewForBindingEntry:entry];
+}
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@, view: %@, dataObject: %@, bindings: %@",
+            [super description], [self.view shortDescription], self.dataObject, self.bindings];
 }
 
 @end
