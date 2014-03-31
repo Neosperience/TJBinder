@@ -39,7 +39,7 @@
 
 -(NSString *)shortDescription
 {
-    return [NSString stringWithFormat:@"<%@: %p>", [self class], self];
+    return [super description];
 }
 
 @end

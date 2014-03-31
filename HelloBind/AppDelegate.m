@@ -6,13 +6,20 @@
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
+#import <DDASLLogger.h>
+#import <DDTTYLogger.h>
+
 #import "AppDelegate.h"
+
+const int ddBinderLogLevel = LOG_LEVEL_VERBOSE;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+
     return YES;
 }
 							

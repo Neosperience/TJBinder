@@ -6,28 +6,30 @@
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
+#import <DDLog.h>
+
 #import "BindProxy.h"
 #import "UIView+Bind.h"
 #import "NSObject+FTKDataObject.h"
 
 @interface BindEntry : NSObject
 
-@property (strong) NSString* dataObjectKey;
+@property (strong) NSString* dataObjectKeyPath;
 @property (strong) NSString* viewKey;
 @property (weak) UIView* view;
 @property (assign) BOOL registered;
 
--(instancetype)initWithDataObjectKey:(NSString*)dataObjectKey viewKey:(NSString*)viewKey view:(UIView*)view;
+-(instancetype)initWithDataObjectKeyPath:(NSString*)dataObjectKeyPath viewKey:(NSString*)viewKey view:(UIView*)view;
 
 @end
 
 @implementation BindEntry
 
-- (instancetype)initWithDataObjectKey:(NSString *)dataObjectKey viewKey:(NSString *)viewKey view:(UIView *)view
+- (instancetype)initWithDataObjectKeyPath:(NSString *)dataObjectKeyPath viewKey:(NSString *)viewKey view:(UIView *)view
 {
     self = [super init];
     if (self) {
-        self.dataObjectKey = dataObjectKey;
+        self.dataObjectKeyPath = dataObjectKeyPath;
         self.viewKey = viewKey;
         self.view = view;
     }
@@ -36,8 +38,8 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"%@ view: %@, dataObjectKey: %@, viewKey: %@, registered: %@",
-            [super description], [self.view shortDescription], self.dataObjectKey, self.viewKey, self.registered ? @"YES" : @"NO"];
+    return [NSString stringWithFormat:@"%@ view: %@, dataObjectKeyPath: %@, viewKey: %@, registered: %@",
+            [super description], [self.view shortDescription], self.dataObjectKeyPath, self.viewKey, self.registered ? @"YES" : @"NO"];
 }
 
 @end
@@ -89,13 +91,13 @@
     {
         if (entry.registered)
         {
-            NSLog(@"dataObject: %@ unregistering entry: %@", self.dataObject, entry);
-            [self.dataObject removeObserver:self forKeyPath:entry.dataObjectKey context:(__bridge void *)(entry)];
+            DDLogDebug(@"dataObject: %@ unregistering entry: { %@ }", self.dataObject, entry);
+            [self.dataObject removeObserver:self forKeyPath:entry.dataObjectKeyPath context:(__bridge void *)(entry)];
             entry.registered = NO;
         }
         else
         {
-            NSLog(@"dataObject: %@ NOT unregistering entry: %@", self.dataObject, entry);
+            DDLogDebug(@"dataObject: %@ NOT unregistering entry: { %@ }", self.dataObject, entry);
         }
     }
 }
@@ -106,32 +108,46 @@
 
     for (BindEntry* entry in self.bindings)
     {
-        [self.dataObject addObserver:self forKeyPath:entry.dataObjectKey options:NSKeyValueObservingOptionNew context:(__bridge void *)(entry)];
+        [self.dataObject addObserver:self forKeyPath:entry.dataObjectKeyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)(entry)];
         entry.registered = YES;
-        NSLog(@"dataObject: %@ registered entry: { %@ }", self.dataObject, entry);
+        DDLogDebug(@"dataObject: %@, registered entry: { %@ }", self.dataObject, entry);
         [self updateViewForBindingEntry:entry];
     }
 }
 
--(void)flushBindingPathForDataObjectKey:(NSString*)dataObjectKey viewKey:(NSString*)viewKey
+-(void)flushBindingPathForFinalDataObjectKey:(NSString*)finalDataObjectKey viewKey:(NSString*)viewKey
 {
     UIView* dataObjectHolderView = self.view;
     
+    NSMutableArray* reconstructedDataObjectKeyPath = [NSMutableArray array];
+    BOOL didPassDataObjectKey = NO;
+    
     for (NSString* pathComponent in self.dataObjectKeyPath)
     {
-        if ([pathComponent isEqualToString:@"superview"])
+        if ([pathComponent isEqualToString:@"dataObject"])
         {
-            dataObjectHolderView = dataObjectHolderView.superview;
+            didPassDataObjectKey = YES;
+            continue;
+        }
+        
+        if (!didPassDataObjectKey)
+        {
+            dataObjectHolderView = [dataObjectHolderView valueForKey:pathComponent];
+            NSAssert([dataObjectHolderView isKindOfClass:[UIView class]],
+                     @"Found a non-UIView object %@ proceeding the key path: %@", dataObjectHolderView, self.dataObjectKeyPath);
         }
         else
         {
-            NSAssert(YES, @"Only 'superview' supported!");
+            [reconstructedDataObjectKeyPath addObject:pathComponent];
         }
     }
     
+    [reconstructedDataObjectKeyPath addObject:finalDataObjectKey];
+    NSString* dataObjectKeyPathString = [reconstructedDataObjectKeyPath componentsJoinedByString:@"."];
+    
     [self.dataObjectKeyPath removeAllObjects];
     
-    BindEntry* entry = [[BindEntry alloc] initWithDataObjectKey:dataObjectKey viewKey:viewKey view:self.view];
+    BindEntry* entry = [[BindEntry alloc] initWithDataObjectKeyPath:dataObjectKeyPathString viewKey:viewKey view:self.view];
     
     [dataObjectHolderView.bindTo.bindings addObject:entry];
     
@@ -140,21 +156,34 @@
 
 -(void)updateViewForBindingEntry:(BindEntry*)entry
 {
-    id extractedValue = [self.dataObject valueForKey:entry.dataObjectKey];
+    id extractedValue = [self.dataObject valueForKeyPath:entry.dataObjectKeyPath];
     [entry.view setValue:extractedValue forKey:entry.viewKey];
 }
 
 -(id)valueForUndefinedKey:(NSString *)key
 {
-//    NSLog(@"%s %@", __PRETTY_FUNCTION__, key);
+    DDLogVerbose(@"%s %@", __PRETTY_FUNCTION__, key);
     [self.dataObjectKeyPath addObject:key];
     return self;
 }
 
+-(id)valueForKey:(NSString *)key
+{
+    if ([key isEqualToString:@"dataObject"])
+    {
+        [self.dataObjectKeyPath addObject:key];
+        return self;
+    }
+    else
+    {
+        return [super valueForKey:key];
+    }
+}
+
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-//    NSLog(@"%s { %@ : %@ } \n%@", __PRETTY_FUNCTION__, key, value, self.dataObjectKeyPath);
-    [self flushBindingPathForDataObjectKey:key viewKey:value];
+    DDLogVerbose(@"%s { %@ : %@ } \n%@", __PRETTY_FUNCTION__, key, value, self.dataObjectKeyPath);
+    [self flushBindingPathForFinalDataObjectKey:key viewKey:value];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

@@ -12,6 +12,4 @@
 
 -(instancetype)initWithView:(UIView*)view;
 
--(void)registerBindings;
-
 @end

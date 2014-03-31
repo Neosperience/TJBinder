@@ -55,8 +55,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="bindTo.superview.counterString" value="text"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="bindTo.superview.counterColor" value="textColor"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="bindTo.superview.dataObject.counter.counterString" value="text"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="bindTo.superview.dataObject.counter.counterColor" value="textColor"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>

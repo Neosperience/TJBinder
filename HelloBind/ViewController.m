@@ -8,14 +8,14 @@
 
 #import "ViewController.h"
 #import "NSObject+FTKDataObject.h"
-#import "Counter.h"
+#import "CounterHolder.h"
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.dataObject = [Counter new];
+    self.view.dataObject = [CounterHolder new];
 }
 
 @end

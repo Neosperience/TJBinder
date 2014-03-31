@@ -21,6 +21,8 @@
 		1B81053A18E9619600014234 /* UIView+Bind.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81053718E9619600014234 /* UIView+Bind.m */; };
 		1B81053D18E961DD00014234 /* NSObject+FTKDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81053C18E961DD00014234 /* NSObject+FTKDataObject.m */; };
 		1B81054018E9624B00014234 /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B81053F18E9624B00014234 /* UIColor+Random.m */; };
+		1BEF306618E9CA96003B02E5 /* CounterHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEF306518E9CA96003B02E5 /* CounterHolder.m */; };
+		30E631A432214D5D8CC42C36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F18D3A9ECE7248779F04654F /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		1B81053C18E961DD00014234 /* NSObject+FTKDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FTKDataObject.m"; sourceTree = "<group>"; };
 		1B81053E18E9624B00014234 /* UIColor+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Random.h"; sourceTree = "<group>"; };
 		1B81053F18E9624B00014234 /* UIColor+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Random.m"; sourceTree = "<group>"; };
+		1BEF306418E9CA96003B02E5 /* CounterHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterHolder.h; sourceTree = "<group>"; };
+		1BEF306518E9CA96003B02E5 /* CounterHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterHolder.m; sourceTree = "<group>"; };
+		2776AF76B3124CF698E2E0D6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F18D3A9ECE7248779F04654F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,7 @@
 				1B685E4918E6DC7A005BF4BF /* CoreGraphics.framework in Frameworks */,
 				1B685E4B18E6DC7A005BF4BF /* UIKit.framework in Frameworks */,
 				1B685E4718E6DC7A005BF4BF /* Foundation.framework in Frameworks */,
+				30E631A432214D5D8CC42C36 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +79,7 @@
 				1B685E4C18E6DC7A005BF4BF /* HelloBind */,
 				1B685E4518E6DC7A005BF4BF /* Frameworks */,
 				1B685E4418E6DC7A005BF4BF /* Products */,
+				2776AF76B3124CF698E2E0D6 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +98,7 @@
 				1B685E4818E6DC7A005BF4BF /* CoreGraphics.framework */,
 				1B685E4A18E6DC7A005BF4BF /* UIKit.framework */,
 				1B685E6518E6DC7A005BF4BF /* XCTest.framework */,
+				F18D3A9ECE7248779F04654F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -103,6 +112,8 @@
 				1B685E9618E6DE99005BF4BF /* ViewController.m */,
 				1B81052D18E6F41200014234 /* Counter.h */,
 				1B81052E18E6F41200014234 /* Counter.m */,
+				1BEF306418E9CA96003B02E5 /* CounterHolder.h */,
+				1BEF306518E9CA96003B02E5 /* CounterHolder.m */,
 				1B81053E18E9624B00014234 /* UIColor+Random.h */,
 				1B81053F18E9624B00014234 /* UIColor+Random.m */,
 				1B685E5818E6DC7A005BF4BF /* Main.storyboard */,
@@ -151,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B685E7518E6DC7A005BF4BF /* Build configuration list for PBXNativeTarget "HelloBind" */;
 			buildPhases = (
+				B7D5403FA8A240FDBBE78A35 /* Check Pods Manifest.lock */,
 				1B685E3F18E6DC7A005BF4BF /* Sources */,
 				1B685E4018E6DC7A005BF4BF /* Frameworks */,
 				1B685E4118E6DC7A005BF4BF /* Resources */,
+				8B0D13FF8F1D4E22851318AC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -204,6 +217,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B0D13FF8F1D4E22851318AC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7D5403FA8A240FDBBE78A35 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B685E3F18E6DC7A005BF4BF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -217,6 +263,7 @@
 				1B685E9818E6DE99005BF4BF /* ViewController.m in Sources */,
 				1B81053A18E9619600014234 /* UIView+Bind.m in Sources */,
 				1B685E5318E6DC7A005BF4BF /* main.m in Sources */,
+				1BEF306618E9CA96003B02E5 /* CounterHolder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +361,7 @@
 		};
 		1B685E7618E6DC7A005BF4BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2776AF76B3124CF698E2E0D6 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -328,6 +376,7 @@
 		};
 		1B685E7718E6DC7A005BF4BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2776AF76B3124CF698E2E0D6 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
