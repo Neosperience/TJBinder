@@ -22,6 +22,7 @@
         bindTo = [[BindProxy alloc] initWithView:self];
         self.bindTo = bindTo;
     }
+    [bindTo resetKeyPath];
     return bindTo;
 }
 

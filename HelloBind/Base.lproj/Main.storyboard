@@ -44,11 +44,11 @@
                         <viewControllerLayoutGuide type="top" id="D6R-dJ-Zn6"/>
                         <viewControllerLayoutGuide type="bottom" id="O0f-sl-IpY"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Zfb-7F-d4Z">
+                    <view key="view" tag="321" contentMode="scaleToFill" id="Zfb-7F-d4Z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS6-uK-QKO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="123" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="myRestorationID" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KS6-uK-QKO" userLabel="myLabel">
                                 <rect key="frame" x="112" y="245" width="97" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="bindTo.superview.dataObject.counter.counterString" value="text"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="bindTo.superview.dataObject.counter.counterColor" value="textColor"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="bindTo.@rootview.@subviewWithClass[UILabel].superview.dataObject.counter.counterColor" value="textColor"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>

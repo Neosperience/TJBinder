@@ -12,4 +12,6 @@
 
 -(instancetype)initWithView:(UIView*)view;
 
+-(void)resetKeyPath;
+
 @end

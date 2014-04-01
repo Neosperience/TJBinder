@@ -11,6 +11,9 @@
 #import "BindProxy.h"
 #import "UIView+Bind.h"
 #import "NSObject+FTKDataObject.h"
+#import "NSString+NEOSStringUtils.h"
+#import "BinderKeyPathParser.h"
+#import "NSArray+BlockFilter.h"
 
 @interface BindEntry : NSObject
 
@@ -115,6 +118,11 @@
     }
 }
 
+-(void)resetKeyPath
+{
+    [self.dataObjectKeyPath removeAllObjects];
+}
+
 -(void)flushBindingPathForFinalDataObjectKey:(NSString*)finalDataObjectKey viewKey:(NSString*)viewKey
 {
     UIView* dataObjectHolderView = self.view;
@@ -132,9 +140,10 @@
         
         if (!didPassDataObjectKey)
         {
-            dataObjectHolderView = [dataObjectHolderView valueForKey:pathComponent];
+            dataObjectHolderView = [self viewForExtendedKeyPathComponent:pathComponent forView:dataObjectHolderView];
             NSAssert([dataObjectHolderView isKindOfClass:[UIView class]],
                      @"Found a non-UIView object %@ proceeding the key path: %@", dataObjectHolderView, self.dataObjectKeyPath);
+            // TODO: support subviews array (?)
         }
         else
         {
@@ -152,6 +161,105 @@
     [dataObjectHolderView.bindTo.bindings addObject:entry];
     
     [dataObjectHolderView.bindTo updateViewForBindingEntry:entry];
+}
+
++ (NSArray*)parsers
+{
+    static dispatch_once_t onceToken;
+    static NSArray* parsers;
+    dispatch_once(&onceToken, ^{
+        parsers = @[
+        
+            [BinderKeyPathParser parserWithFunction:@"@superview" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
+            {
+                 NSAssert(view.superview, @"%@ has no superview", view);
+                 return view.superview;
+            }],
+            
+            [BinderKeyPathParser parserWithFunction:@"@rootview" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
+            {
+                 UIView* currentView = view;
+                 while (currentView.superview) currentView = currentView.superview;
+                 return currentView;
+            }],
+            
+            [BinderKeyPathParser intParserWithFunction:@"@superviewWithTag" withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
+            {
+                UIView* currentView = view.superview;
+                while (currentView && (currentView.tag != argument)) currentView = currentView.superview;
+                NSAssert(currentView, @"No superview found with tag: %d", argument);
+                return currentView;
+            }],
+            
+            [BinderKeyPathParser stringParserWithFunction:@"@superviewWithRestorationID" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
+            {
+                UIView* currentView = view.superview;
+                while (currentView && (![currentView.restorationIdentifier isEqualToString:argument])) currentView = view.superview;
+                NSAssert(currentView, @"No superview found with restorationID: %@", argument);
+                return currentView;
+            }],
+            
+            [BinderKeyPathParser stringParserWithFunction:@"@superviewWithClass" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
+            {
+                UIView* currentView = view.superview;
+                Class superviewClass = NSClassFromString(argument);
+                NSAssert(superviewClass, @"Invalid class: %@", argument);
+                while (currentView && (![currentView isKindOfClass:superviewClass])) currentView = currentView.superview;
+                NSAssert(currentView, @"No superview found with class: '%@'", argument);
+                return currentView;
+            }],
+        
+            [BinderKeyPathParser intParserWithFunction:@"@subviews"
+                                  withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
+            {
+                 return view.subviews[argument];
+            }],
+            
+            [BinderKeyPathParser intParserWithFunction:@"@subviewWithTag"
+                                  withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
+            {
+                 UIView* matchingView = [view.subviews firstObjectMatchingPredicate:[NSPredicate predicateWithFormat:@"tag == %d", argument]];
+                 NSAssert(matchingView, @"No subview found with tag: %d", argument);
+                 return matchingView;
+            }],
+            
+            [BinderKeyPathParser stringParserWithFunction:@"@subviewWithRestorationID"
+                                     withTransformerBlock:^UIView *(UIView *view, NSString *argument)
+            {
+                 UIView* matchingView = [view.subviews firstObjectMatchingPredicate:[NSPredicate predicateWithFormat:@"restorationIdentifier == %@", argument]];
+                 NSAssert(matchingView, @"No subview found with restorationID: '%@'", argument);
+                 return matchingView;
+            }],
+            
+            [BinderKeyPathParser stringParserWithFunction:@"@subviewWithClass" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
+            {
+                Class superviewClass = NSClassFromString(argument);
+                UIView* matchingView = [view.subviews firstObjectMatchingWithBlock:^BOOL(id item) { return [item isKindOfClass:superviewClass]; }];
+                NSAssert(matchingView, @"No subview found with class: '%@'", argument);
+                return matchingView;
+            }],
+            
+            [BinderKeyPathParser parserWithFunction:@"*" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
+            {
+                return [view valueForKey:originalKeyPathComponent];
+            }]
+        ];
+    });
+    return parsers;
+}
+
+-(UIView*)viewForExtendedKeyPathComponent:(NSString*)pathComponent forView:(UIView*)view
+{
+    UIView* result = nil;
+    
+    for (BinderKeyPathParser* parser in [[self class] parsers])
+    {
+        result = [parser tryToParseWithKeyPathComponent:pathComponent forView:view];
+        if (result) break;
+    }
+    
+    NSAssert(result, @"Unable to parse key path component: %@", pathComponent);
+    return result;
 }
 
 -(void)updateViewForBindingEntry:(BindEntry*)entry
