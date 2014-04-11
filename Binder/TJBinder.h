@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BindProxy : NSObject
+@interface TJBinder : NSObject
 
 -(instancetype)initWithView:(UIView*)view;
 
 -(void)resetKeyPath;
+
+@property (strong, nonatomic) id dataObject;
 
 @end

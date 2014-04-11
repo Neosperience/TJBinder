@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "NSObject+FTKDataObject.h"
 #import "CounterHolder.h"
+#import "UIView+TJBinder.h"
 
 @implementation ViewController
 

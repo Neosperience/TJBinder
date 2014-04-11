@@ -6,16 +6,14 @@
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
-#import <DDLog.h>
+#import "TJBinder.h"
+#import "UIView+TJBinder.h"
+#import "TJBinderKeyPathParser.h"
+#import "TJBinderLogger.h"
 
-#import "BindProxy.h"
-#import "UIView+Bind.h"
-#import "NSObject+FTKDataObject.h"
-#import "NSString+NEOSStringUtils.h"
-#import "BinderKeyPathParser.h"
-#import "NSArray+BlockFilter.h"
+#pragma mark - BindEntry
 
-@interface BindEntry : NSObject
+@interface TJBindEntry : NSObject
 
 @property (strong) NSString* dataObjectKeyPath;
 @property (strong) NSString* viewKey;
@@ -26,7 +24,7 @@
 
 @end
 
-@implementation BindEntry
+@implementation TJBindEntry
 
 - (instancetype)initWithDataObjectKeyPath:(NSString *)dataObjectKeyPath viewKey:(NSString *)viewKey view:(UIView *)view
 {
@@ -47,7 +45,9 @@
 
 @end
 
-@interface BindProxy ()
+#pragma mark - BindProxy
+
+@interface TJBinder ()
 
 @property (weak) UIView* view;
 @property (strong) NSMutableArray* bindings;
@@ -55,7 +55,7 @@
 
 @end
 
-@implementation BindProxy
+@implementation TJBinder
 
 - (instancetype)init
 {
@@ -79,7 +79,7 @@
 -(void)setDataObject:(id)dataObject
 {
     [self unregisterBindings];
-    [super setDataObject:dataObject];
+    _dataObject = dataObject;
     [self registerBindings];
 }
 
@@ -90,17 +90,17 @@
 
 -(void)unregisterBindings
 {
-    for (BindEntry* entry in self.bindings)
+    for (TJBindEntry* entry in self.bindings)
     {
         if (entry.registered)
         {
-            DDLogDebug(@"dataObject: %@ unregistering entry: { %@ }", self.dataObject, entry);
+            TJBinderLogDebug(@"dataObject: %@ unregistering entry: { %@ }", self.dataObject, entry);
             [self.dataObject removeObserver:self forKeyPath:entry.dataObjectKeyPath context:(__bridge void *)(entry)];
             entry.registered = NO;
         }
         else
         {
-            DDLogDebug(@"dataObject: %@ NOT unregistering entry: { %@ }", self.dataObject, entry);
+            TJBinderLogDebug(@"dataObject: %@ NOT unregistering entry: { %@ }", self.dataObject, entry);
         }
     }
 }
@@ -109,11 +109,11 @@
 {
     if (!self.dataObject) return;
 
-    for (BindEntry* entry in self.bindings)
+    for (TJBindEntry* entry in self.bindings)
     {
         [self.dataObject addObserver:self forKeyPath:entry.dataObjectKeyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)(entry)];
         entry.registered = YES;
-        DDLogDebug(@"dataObject: %@, registered entry: { %@ }", self.dataObject, entry);
+        TJBinderLogDebug(@"dataObject: %@, registered entry: { %@ }", self.dataObject, entry);
         [self updateViewForBindingEntry:entry];
     }
 }
@@ -143,7 +143,6 @@
             dataObjectHolderView = [self viewForExtendedKeyPathComponent:pathComponent forView:dataObjectHolderView];
             NSAssert([dataObjectHolderView isKindOfClass:[UIView class]],
                      @"Found a non-UIView object %@ proceeding the key path: %@", dataObjectHolderView, self.dataObjectKeyPath);
-            // TODO: support subviews array (?)
         }
         else
         {
@@ -156,7 +155,7 @@
     
     [self.dataObjectKeyPath removeAllObjects];
     
-    BindEntry* entry = [[BindEntry alloc] initWithDataObjectKeyPath:dataObjectKeyPathString viewKey:viewKey view:self.view];
+    TJBindEntry* entry = [[TJBindEntry alloc] initWithDataObjectKeyPath:dataObjectKeyPathString viewKey:viewKey view:self.view];
     
     [dataObjectHolderView.bindTo.bindings addObject:entry];
     
@@ -170,20 +169,20 @@
     dispatch_once(&onceToken, ^{
         parsers = @[
         
-            [BinderKeyPathParser parserWithFunction:@"@superview" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
+            [TJBinderKeyPathParser parserWithFunction:@"@superview" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
             {
                  NSAssert(view.superview, @"%@ has no superview", view);
                  return view.superview;
             }],
             
-            [BinderKeyPathParser parserWithFunction:@"@rootview" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
+            [TJBinderKeyPathParser parserWithFunction:@"@rootview" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
             {
                  UIView* currentView = view;
                  while (currentView.superview) currentView = currentView.superview;
                  return currentView;
             }],
             
-            [BinderKeyPathParser intParserWithFunction:@"@superviewWithTag" withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
+            [TJBinderKeyPathParser intParserWithFunction:@"@superviewWithTag" withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
             {
                 UIView* currentView = view.superview;
                 while (currentView && (currentView.tag != argument)) currentView = currentView.superview;
@@ -191,7 +190,7 @@
                 return currentView;
             }],
             
-            [BinderKeyPathParser stringParserWithFunction:@"@superviewWithRestorationID" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
+            [TJBinderKeyPathParser stringParserWithFunction:@"@superviewWithRestorationID" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
             {
                 UIView* currentView = view.superview;
                 while (currentView && (![currentView.restorationIdentifier isEqualToString:argument])) currentView = view.superview;
@@ -199,7 +198,7 @@
                 return currentView;
             }],
             
-            [BinderKeyPathParser stringParserWithFunction:@"@superviewWithClass" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
+            [TJBinderKeyPathParser stringParserWithFunction:@"@superviewWithClass" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
             {
                 UIView* currentView = view.superview;
                 Class superviewClass = NSClassFromString(argument);
@@ -209,37 +208,45 @@
                 return currentView;
             }],
         
-            [BinderKeyPathParser intParserWithFunction:@"@subviews"
+            [TJBinderKeyPathParser intParserWithFunction:@"@subviews"
                                   withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
             {
-                 return view.subviews[argument];
+                return view.subviews[argument];
             }],
             
-            [BinderKeyPathParser intParserWithFunction:@"@subviewWithTag"
+            [TJBinderKeyPathParser intParserWithFunction:@"@subviewWithTag"
                                   withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
             {
-                 UIView* matchingView = [view.subviews firstObjectMatchingPredicate:[NSPredicate predicateWithFormat:@"tag == %d", argument]];
-                 NSAssert(matchingView, @"No subview found with tag: %d", argument);
-                 return matchingView;
+                NSPredicate* predicate = [NSPredicate predicateWithFormat:@"tag == %d", argument];
+                NSUInteger matchingViewIndex = [view.subviews indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                    return [predicate evaluateWithObject:obj];
+                }];
+                NSAssert(matchingViewIndex != NSNotFound, @"No subview found with tag: %d", argument);
+                return view.subviews[matchingViewIndex];
             }],
             
-            [BinderKeyPathParser stringParserWithFunction:@"@subviewWithRestorationID"
+            [TJBinderKeyPathParser stringParserWithFunction:@"@subviewWithRestorationID"
                                      withTransformerBlock:^UIView *(UIView *view, NSString *argument)
             {
-                 UIView* matchingView = [view.subviews firstObjectMatchingPredicate:[NSPredicate predicateWithFormat:@"restorationIdentifier == %@", argument]];
-                 NSAssert(matchingView, @"No subview found with restorationID: '%@'", argument);
-                 return matchingView;
+                NSPredicate* predicate = [NSPredicate predicateWithFormat:@"restorationIdentifier == %@", argument];
+                NSUInteger matchingViewIndex = [view.subviews indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                    return [predicate evaluateWithObject:obj];
+                }];
+                NSAssert(matchingViewIndex != NSNotFound, @"No subview found with restorationID: '%@'", argument);
+                return view.subviews[matchingViewIndex];
             }],
             
-            [BinderKeyPathParser stringParserWithFunction:@"@subviewWithClass" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
+            [TJBinderKeyPathParser stringParserWithFunction:@"@subviewWithClass" withTransformerBlock:^UIView *(UIView *view, NSString *argument)
             {
                 Class superviewClass = NSClassFromString(argument);
-                UIView* matchingView = [view.subviews firstObjectMatchingWithBlock:^BOOL(id item) { return [item isKindOfClass:superviewClass]; }];
-                NSAssert(matchingView, @"No subview found with class: '%@'", argument);
-                return matchingView;
+                NSUInteger matchingViewIndex = [view.subviews indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                    return [obj isKindOfClass:superviewClass];
+                }];
+                NSAssert(matchingViewIndex != NSNotFound, @"No subview found with class: '%@'", argument);
+                return view.subviews[matchingViewIndex];
             }],
             
-            [BinderKeyPathParser parserWithFunction:@"*" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
+            [TJBinderKeyPathParser parserWithFunction:@"*" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
             {
                 return [view valueForKey:originalKeyPathComponent];
             }]
@@ -252,7 +259,7 @@
 {
     UIView* result = nil;
     
-    for (BinderKeyPathParser* parser in [[self class] parsers])
+    for (TJBinderKeyPathParser* parser in [[self class] parsers])
     {
         result = [parser tryToParseWithKeyPathComponent:pathComponent forView:view];
         if (result) break;
@@ -262,15 +269,17 @@
     return result;
 }
 
--(void)updateViewForBindingEntry:(BindEntry*)entry
+-(void)updateViewForBindingEntry:(TJBindEntry*)entry
 {
     id extractedValue = [self.dataObject valueForKeyPath:entry.dataObjectKeyPath];
     [entry.view setValue:extractedValue forKey:entry.viewKey];
 }
 
+#pragma mark NSObject overrides
+
 -(id)valueForUndefinedKey:(NSString *)key
 {
-    DDLogVerbose(@"%s %@", __PRETTY_FUNCTION__, key);
+    TJBinderLogVerbose(@"%s %@", __PRETTY_FUNCTION__, key);
     [self.dataObjectKeyPath addObject:key];
     return self;
 }
@@ -290,13 +299,13 @@
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    DDLogVerbose(@"%s { %@ : %@ } \n%@", __PRETTY_FUNCTION__, key, value, self.dataObjectKeyPath);
+    TJBinderLogVerbose(@"%s { %@ : %@ } \n%@", __PRETTY_FUNCTION__, key, value, self.dataObjectKeyPath);
     [self flushBindingPathForFinalDataObjectKey:key viewKey:value];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    BindEntry* entry = (__bridge BindEntry*)context;
+    TJBindEntry* entry = (__bridge TJBindEntry*)context;
     [self updateViewForBindingEntry:entry];
 }
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
-#import "BinderKeyPathParser.h"
-#import "NSString+NEOSStringUtils.h"
-#import "UIView+Bind.h"
+#import "TJBinderKeyPathParser.h"
+#import "UIView+TJBinder.h"
+#import "TJBinderLogger.h"
 
 typedef enum : NSUInteger {
     BinderKeyPathParserTypeUnknown,
@@ -17,19 +17,19 @@ typedef enum : NSUInteger {
     BinderKeyPathParserTypeStringArgument,
 } BinderKeyPathParserType;
 
-@interface BinderKeyPathParser ()
+@interface TJBinderKeyPathParser ()
 
 @property (assign) BinderKeyPathParserType type;
 @property (strong) NSString* functionName;
-@property (nonatomic, copy) BinderKeyPathIntegerArgumentTransformerBlock integerTransformerBlock;
-@property (nonatomic, copy) BinderKeyPathStringArgumentTransformerBlock stringTransformerBlock;
-@property (nonatomic, copy) BinderKeyPathNoArgumentTransformerBlock transformerBlock;
+@property (nonatomic, copy) TJBinderKeyPathIntegerArgumentTransformerBlock integerTransformerBlock;
+@property (nonatomic, copy) TJBinderKeyPathStringArgumentTransformerBlock stringTransformerBlock;
+@property (nonatomic, copy) TJBinderKeyPathNoArgumentTransformerBlock transformerBlock;
 
 @end
 
-@implementation BinderKeyPathParser
+@implementation TJBinderKeyPathParser
 
-- (instancetype)initIntParserWithFunction:(NSString *)functionName withTransformerBlock:(BinderKeyPathIntegerArgumentTransformerBlock)block
+- (instancetype)initIntParserWithFunction:(NSString *)functionName withTransformerBlock:(TJBinderKeyPathIntegerArgumentTransformerBlock)block
 {
     self = [super init];
     if (self) {
@@ -40,7 +40,7 @@ typedef enum : NSUInteger {
     return self;
 }
 
--(instancetype)initStringParserWithFunction:(NSString *)functionName withTransformerBlock:(BinderKeyPathStringArgumentTransformerBlock)block
+-(instancetype)initStringParserWithFunction:(NSString *)functionName withTransformerBlock:(TJBinderKeyPathStringArgumentTransformerBlock)block
 {
     self = [super init];
     if (self) {
@@ -51,7 +51,7 @@ typedef enum : NSUInteger {
     return self;
 }
 
-- (instancetype)initWithFunction:(NSString *)functionName withTransformerBlock:(BinderKeyPathNoArgumentTransformerBlock)block
+- (instancetype)initWithFunction:(NSString *)functionName withTransformerBlock:(TJBinderKeyPathNoArgumentTransformerBlock)block
 {
     self = [super init];
     if (self) {
@@ -62,35 +62,35 @@ typedef enum : NSUInteger {
     return self;
 }
 
--(void)setTransformerBlock:(BinderKeyPathNoArgumentTransformerBlock)transformerBlock
+-(void)setTransformerBlock:(TJBinderKeyPathNoArgumentTransformerBlock)transformerBlock
 {
     NSParameterAssert(transformerBlock);
     _transformerBlock = [transformerBlock copy];
 }
 
--(void)setStringTransformerBlock:(BinderKeyPathStringArgumentTransformerBlock)stringTransformerBlock
+-(void)setStringTransformerBlock:(TJBinderKeyPathStringArgumentTransformerBlock)stringTransformerBlock
 {
     NSParameterAssert(stringTransformerBlock);
     _stringTransformerBlock = [stringTransformerBlock copy];
 }
 
--(void)setIntegerTransformerBlock:(BinderKeyPathIntegerArgumentTransformerBlock)integerTransformerBlock
+-(void)setIntegerTransformerBlock:(TJBinderKeyPathIntegerArgumentTransformerBlock)integerTransformerBlock
 {
     NSParameterAssert(integerTransformerBlock);
     _integerTransformerBlock = [integerTransformerBlock copy];
 }
 
-+(instancetype)intParserWithFunction:(NSString *)functionName withTransformerBlock:(BinderKeyPathIntegerArgumentTransformerBlock)block
++(instancetype)intParserWithFunction:(NSString *)functionName withTransformerBlock:(TJBinderKeyPathIntegerArgumentTransformerBlock)block
 {
     return [[self alloc] initIntParserWithFunction:functionName withTransformerBlock:block];
 }
 
-+(instancetype)stringParserWithFunction:(NSString *)functionName withTransformerBlock:(BinderKeyPathStringArgumentTransformerBlock)block
++(instancetype)stringParserWithFunction:(NSString *)functionName withTransformerBlock:(TJBinderKeyPathStringArgumentTransformerBlock)block
 {
     return [[self alloc] initStringParserWithFunction:functionName withTransformerBlock:block];
 }
 
-+(instancetype)parserWithFunction:(NSString *)functionName withTransformerBlock:(BinderKeyPathNoArgumentTransformerBlock)block
++(instancetype)parserWithFunction:(NSString *)functionName withTransformerBlock:(TJBinderKeyPathNoArgumentTransformerBlock)block
 {
     return [[self alloc] initWithFunction:functionName withTransformerBlock:block];
 }
@@ -126,14 +126,14 @@ typedef enum : NSUInteger {
 {
     UIView* result = nil;
     
-    DDLogVerbose(@"%@ tryToParseWithKeyPathComponent: %@ forView: %@", self, keyPathComponent, [view shortDescription]);
+    TJBinderLogVerbose(@"%@ tryToParseWithKeyPathComponent: %@ forView: %@", self, keyPathComponent, [view shortDescription]);
     
     BOOL matches = [self.functionName isEqualToString:@"*"];
     
     if (!matches)
     {
         if (self.type == BinderKeyPathParserTypeNoArgument) matches = [keyPathComponent isEqualToString:self.functionName];
-        else matches = [keyPathComponent startsWithString:self.functionName];
+        else matches = [keyPathComponent hasPrefix:self.functionName];
     }
     
     if (matches)
@@ -170,11 +170,11 @@ typedef enum : NSUInteger {
     
     if (result)
     {
-        DDLogVerbose(@"success, resolved view: %@", [result shortDescription]);
+        TJBinderLogVerbose(@"success, resolved view: %@", [result shortDescription]);
     }
     else
     {
-        DDLogVerbose(@"no match");
+        TJBinderLogVerbose(@"no match");
     }
     
     return result;
