@@ -186,7 +186,7 @@
             {
                 UIView* currentView = view.superview;
                 while (currentView && (currentView.tag != argument)) currentView = currentView.superview;
-                NSAssert(currentView, @"No superview found with tag: %d", argument);
+                NSAssert(currentView, @"No superview found with tag: %@", @(argument));
                 return currentView;
             }],
             
@@ -217,11 +217,11 @@
             [TJBinderKeyPathParser intParserWithFunction:@"@subviewWithTag"
                                   withTransformerBlock:^UIView *(UIView *view, NSInteger argument)
             {
-                NSPredicate* predicate = [NSPredicate predicateWithFormat:@"tag == %d", argument];
+                NSPredicate* predicate = [NSPredicate predicateWithFormat:@"tag == %@", @(argument)];
                 NSUInteger matchingViewIndex = [view.subviews indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
                     return [predicate evaluateWithObject:obj];
                 }];
-                NSAssert(matchingViewIndex != NSNotFound, @"No subview found with tag: %d", argument);
+                NSAssert(matchingViewIndex != NSNotFound, @"No subview found with tag: %@", @(argument));
                 return view.subviews[matchingViewIndex];
             }],
             
