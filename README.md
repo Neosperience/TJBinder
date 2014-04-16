@@ -88,7 +88,7 @@ You want to write a view controller with a `UILabel` that shows the name of the 
 
 The rest of the stuff you can do right in Interface Builder this way:
 
-<a href="https://docs.google.com/uc?export=view&id=0B6Yqko2ker3uWlkxN0h4T1JBYUU" target="_blank"><img src="https://docs.google.com/uc?export=view&id=0B6Yqko2ker3uMHJ0SDZzZ0d4LUE"/></a>
+![screenshot](https://docs.google.com/uc?export=view&id=0B6Yqko2ker3uMHJ0SDZzZ0d4LUE)
 
 There are two important things to note here:
 
