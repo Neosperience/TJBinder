@@ -6,7 +6,7 @@ TJBinder is a lightweight but still powerful iOS implementation of the model -- 
 Introduction
 ------------
 
-This section explains why and when `TJBinder` is useful for you in a kind of storytelling style. If you want to jump straight inside the details continue reading with the [next section][2].
+This section explains why and when `TJBinder` is useful for you in a kind of storytelling style. If you want to jump straight inside the details continue reading with the next section.
 
 **The problem**
 
@@ -26,7 +26,6 @@ The things get even worse if your data object can change during the time, for ex
 
 but until today it was available only for OS-X developers. It is called [Cocoa bindings][5]. Cocoa bindings is a very powerful technology where you can say directly in Interface Builder things like "I want the `text` property of my label to be bound directly to the `albumName` property of my data model object contained in my table view cell. At runtime the framework automatically takes care of updating the label with the data model. You save a lot of time by _not_ having to do steps 4 and 5 from the previous list:  subclassing the table view cell, creating `@properties` for your labels and other elements, connect them with the IB elements via outlets and write the update code. Matter of envy for iOS developers but now `TJBinder` allows you to do exactly the same. 
 
-<a name="using"></a>
 How to use TJBinder
 -------------------
 
@@ -170,7 +169,6 @@ You will find more useful however the key path operators defined by `TJBinder` t
 
 
   [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaBindings/ "Cocoa bindings"
-  [2]: #using
   [3]: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller "Model-View-Controller"
   [4]: http://www.raywenderlich.com/1797/ios-tutorial-how-to-create-a-simple-iphone-app-part-1
   [5]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaBindings/ "Cocoa bindings"
