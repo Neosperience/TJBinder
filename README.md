@@ -10,7 +10,7 @@ This section explains why and when `TJBinder` is useful for you in a kind of sto
 
 **The problem**
 
-Let's suppose that you have to write one more simple table view -- details view based [MVC][3] application. (If you have never done it before I suggest you to follow the [excellent tutorial of Ray Wenderlich][4].) When it is the second or third time that you are writing such application you surely notice how many boiler plate code and similar actions you have to take:
+Let's suppose that you have to write one more simple table view -- details view based [MVC][2] application. (If you have never done it before I suggest you to follow the [excellent tutorial of Ray Wenderlich][3].) When it is the second or third time that you are writing such application you surely notice how many boiler plate code and similar actions you have to take:
 
  1. Create your UI in interface builder adding a for example a table view controller to your storyboard.
  2. Create a `UITableViewController` subclass where you retrieve an array or fetched results controller of your data model objects.
@@ -24,7 +24,69 @@ The things get even worse if your data object can change during the time, for ex
 
 **The solution exists...**
 
-but until today it was available only for OS-X developers. It is called [Cocoa bindings][5]. Cocoa bindings is a very powerful technology where you can say directly in Interface Builder things like "I want the `text` property of my label to be bound directly to the `albumName` property of my data model object contained in my table view cell. At runtime the framework automatically takes care of updating the label with the data model. You save a lot of time by _not_ having to do steps 4 and 5 from the previous list:  subclassing the table view cell, creating `@properties` for your labels and other elements, connect them with the IB elements via outlets and write the update code. Matter of envy for iOS developers but now `TJBinder` allows you to do exactly the same. 
+but until today it was available only for OS-X developers. It is called [Cocoa bindings][4]. Cocoa bindings is a very powerful technology where you can say directly in Interface Builder things like "I want the `text` property of my label to be bound directly to the `albumName` property of my data model object contained in my table view cell. At runtime the framework automatically takes care of updating the label with the data model. You save a lot of time by _not_ having to do steps 4 and 5 from the previous list:  subclassing the table view cell, creating `@properties` for your labels and other elements, connect them with the IB elements via outlets and write the update code. Matter of envy for iOS developers but now `TJBinder` allows you to do exactly the same. 
+
+Installation
+------------
+
+The preferred way of installing `TJBinder` is via [Cocoapods][5]. You can add the dependency to TJBinder in your `Podfile`:
+
+```
+pod 'TJBinder'
+```
+
+If you do not want to use Cocoapods you can simply download all files from the `TJBinder` folder and add them to your project.
+
+`TJBinder` allows you to use your favourit logger. Currently no logging, `NSLog` and [CocoaLumberjack][6] is supported.
+
+### Selecting logger using Cocoapods ###
+
+You should specify your logger preference directly in your `Podfile` via `post_install` hooks. For example if you want to use CocoaLumberjack you could create a `Podfile` like this:
+```
+platform :ios, '6.0'
+
+pod 'TJBinder'
+pod 'CocoaLumberjack'
+
+# available loggers:
+# - TJBINDER_LOGGER_NOLOG
+# - TJBINDER_LOGGER_NSLOG
+# - TJBINDER_LOGGER_COCOALUMBERJACK
+
+selectedLogger = 'TJBINDER_LOGGER_COCOALUMBERJACK'
+
+post_install do |installer|
+  target = installer.project.targets.find{|t| t.to_s == "Pods-TJBinder"}
+    target.build_configurations.each do |config|
+        s = config.build_settings['GCC_PREPROCESSOR_DEFINITIONS']
+        s = [ '$(inherited)' ] if s == nil;
+        s.push("TJBINDER_SELECTED_LOGGER=#{selectedLogger}") if config.to_s == "Debug";
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = s
+    end
+end
+```
+
+You should specify the dependency to the `pod` of CocoaLumberjack and add set the `selectedLogger` variable to `TJBINDER_LOGGER_COCOALUMBERJACK`. You also should copy the `post_install` hook above to your `Podfile`. You can specify `selectedLogger` to one of the following options:
+
+ - `TJBINDER_LOGGER_NOLOG`: no logging. This is the default option.
+ - `TJBINDER_LOGGER_NSLOG`: logging with `NSLog` all log levels. No additional dependencies needed.
+ - `TJBINDER_LOGGER_COCOALUMBERJACK`: logging with CocoaLumberjack. You should specify also the dependency `pod 'CocoaLumberjack'` in your `Podfile`.
+
+If you use CocoaLumberjack do not forget to define the `ddLogLevel` global variable in one of your `.m` files to your desidered log level:
+
+```
+const int ddLogLevel = LOG_LEVEL_VERBOSE;
+```
+
+### Selecting logger without Cocoapods ###
+
+If you do not use Cocoapods you should select the logger defining a `TJBINDER_SELECTED_LOGGER` macro to one of the logger options above (`TJBINDER_LOGGER_NOLOG`, `TJBINDER_LOGGER_NSLOG` or `TJBINDER_LOGGER_COCOALUMBERJACK`). If you do not define this macro it will default to `TJBINDER_LOGGER_NOLOG`. You could do this definition in the `MyProject-Prefix.pch` file of your project:
+
+```
+#define TJBINDER_SELECTED_LOGGER TJBINDER_LOGGER_COCOALUMBERJACK
+```
+
+or as a User-Defined Build Setting of your target in your XCode project. To do so select: project file in XCode > Build target > Build Settings > click on the `+` icon in the header > Add User-Defined Setting > set the name of the setting to `TJBINDER_SELECTED_LOGGER` and the value to your preference, for example `TJBINDER_LOGGER_COCOALUMBERJACK`.
 
 How to use TJBinder
 -------------------
@@ -130,7 +192,7 @@ You should insert the key path constructed this way to the "Key Path" column of 
 How does it work?
 -----------------
 
-`TJBinder` heavily uses the [Key-Value Observering][6] technology provided by iOS and OS-X. Key-Value Observing "allows objects to be notified of changes to specified properties of other objects". `TJBinder` adds a category on  `UIView` that defines the `bindTo` property that is the entry point for `TJBinder`. If you add "User Defined Runtime Attributes" to a view object in Interface Builder then at runtime, when the view is instantiated, IB will call the setter or getter method of these properties of your view via Key-Value Coding. 
+`TJBinder` heavily uses the [Key-Value Observering][7] technology provided by iOS and OS-X. Key-Value Observing "allows objects to be notified of changes to specified properties of other objects". `TJBinder` adds a category on  `UIView` that defines the `bindTo` property that is the entry point for `TJBinder`. If you add "User Defined Runtime Attributes" to a view object in Interface Builder then at runtime, when the view is instantiated, IB will call the setter or getter method of these properties of your view via Key-Value Coding. 
 
 Specifying `bindTo` as the first element of the key path will cause the `bindTo` method to be called right after the `UIView` object is instantiated and configured by Interface Builder. `bindTo` will create an associated object for the view with the type of `BindProxy` where the rest of the binding mechanism is implemented.
 
@@ -169,7 +231,9 @@ You will find more useful however the key path operators defined by `TJBinder` t
 
 
   [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaBindings/ "Cocoa bindings"
-  [3]: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller "Model-View-Controller"
-  [4]: http://www.raywenderlich.com/1797/ios-tutorial-how-to-create-a-simple-iphone-app-part-1
-  [5]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaBindings/ "Cocoa bindings"
-  [6]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html
+  [2]: http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller "Model-View-Controller"
+  [3]: http://www.raywenderlich.com/1797/ios-tutorial-how-to-create-a-simple-iphone-app-part-1
+  [4]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaBindings/ "Cocoa bindings"
+  [5]: http://cocoapods.org
+  [6]: https://github.com/CocoaLumberjack/CocoaLumberjack
+  [7]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html
