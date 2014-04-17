@@ -8,7 +8,7 @@ Introduction
 
 This section explains why and when `TJBinder` is useful for you in a kind of storytelling style. If you want to jump straight inside the details continue reading with the next section.
 
-**The problem**
+### The problem ###
 
 Let's suppose that you have to write one more simple table view -- details view based [MVC][2] application. (If you have never done it before I suggest you to follow the [excellent tutorial of Ray Wenderlich][3].) When it is the second or third time that you are writing such application you surely notice how many boiler plate code and similar actions you have to take:
 
@@ -22,7 +22,7 @@ So now you have your table view functioning, the user taps to a cell and you wan
 
 The things get even worse if your data object can change during the time, for example you want to show a clock or the GPS coordinates of the device. Then you have to implement the event listener, most likely through some delegate protocol, and update the view object with the new values every time you notice that the data object has changed.
 
-**The solution exists...**
+### The solution exists... ###
 
 but until today it was available only for OS-X developers. It is called [Cocoa bindings][4]. Cocoa bindings is a very powerful technology where you can say directly in Interface Builder things like "I want the `text` property of my label to be bound directly to the `albumName` property of my data model object contained in my table view cell. At runtime the framework automatically takes care of updating the label with the data model. You save a lot of time by _not_ having to do steps 4 and 5 from the previous list:  subclassing the table view cell, creating `@properties` for your labels and other elements, connect them with the IB elements via outlets and write the update code. Matter of envy for iOS developers but now `TJBinder` allows you to do exactly the same. 
 

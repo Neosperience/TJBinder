@@ -6,11 +6,9 @@
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
-#import "UIView+TJBinder.h"
-#import "UIView+TJBinder.h"
-#import "TJBinder.h"
-
 #import <objc/runtime.h>
+
+#import "UIView+TJBinder.h"
 
 @implementation UIView (TJBinder)
 

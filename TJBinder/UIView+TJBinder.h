@@ -9,16 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "TJBinder.h"
+#import "TJDataObject.h"
 
-@protocol TJDataObject <NSObject>
-
-@optional
-
-- (void)updateFromDataObject;
-
-@end
-
-@interface UIView (TJBinder)
+@interface UIView (TJBinder) <TJDataObject>
 
 @property (readonly) TJBinder* bindTo;
 

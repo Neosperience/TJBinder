@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B70E8E318FED5BF0017003E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B70E8E218FED5BF0017003E /* Foundation.framework */; };
+		1B70E8E518FED5BF0017003E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B70E8E418FED5BF0017003E /* CoreGraphics.framework */; };
+		1B70E8E718FED5BF0017003E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B70E8E618FED5BF0017003E /* UIKit.framework */; };
+		1B70E8ED18FED5BF0017003E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E8EB18FED5BF0017003E /* InfoPlist.strings */; };
+		1B70E8EF18FED5BF0017003E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E8EE18FED5BF0017003E /* main.m */; };
+		1B70E8F318FED5BF0017003E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E8F218FED5BF0017003E /* AppDelegate.m */; };
+		1B70E8F618FED5BF0017003E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E8F418FED5BF0017003E /* Main.storyboard */; };
+		1B70E8FB18FED5BF0017003E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E8FA18FED5BF0017003E /* Images.xcassets */; };
+		1B70E92018FED6D00017003E /* TJBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E91B18FED6D00017003E /* TJBinder.m */; };
+		1B70E92118FED6D00017003E /* TJBinderKeyPathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E91D18FED6D00017003E /* TJBinderKeyPathParser.m */; };
+		1B70E92218FED6D00017003E /* UIView+TJBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E91F18FED6D00017003E /* UIView+TJBinder.m */; };
+		1B70E973190014D10017003E /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E972190014D10017003E /* TableViewController.m */; };
+		1B70E97E19001C2D0017003E /* Fruit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E97C19001C2D0017003E /* Fruit.m */; };
+		1B70E97F19001C2D0017003E /* Fruits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E97D19001C2D0017003E /* Fruits.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B70E8DF18FED5BF0017003E /* TJBinderExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TJBinderExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B70E8E218FED5BF0017003E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1B70E8E418FED5BF0017003E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1B70E8E618FED5BF0017003E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1B70E8EA18FED5BF0017003E /* TJBinderExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TJBinderExample-Info.plist"; sourceTree = "<group>"; };
+		1B70E8EC18FED5BF0017003E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1B70E8EE18FED5BF0017003E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1B70E8F018FED5BF0017003E /* TJBinderExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TJBinderExample-Prefix.pch"; sourceTree = "<group>"; };
+		1B70E8F118FED5BF0017003E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1B70E8F218FED5BF0017003E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1B70E8F518FED5BF0017003E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B70E8FA18FED5BF0017003E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1B70E91A18FED6D00017003E /* TJBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJBinder.h; sourceTree = "<group>"; };
+		1B70E91B18FED6D00017003E /* TJBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJBinder.m; sourceTree = "<group>"; };
+		1B70E91C18FED6D00017003E /* TJBinderKeyPathParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJBinderKeyPathParser.h; sourceTree = "<group>"; };
+		1B70E91D18FED6D00017003E /* TJBinderKeyPathParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJBinderKeyPathParser.m; sourceTree = "<group>"; };
+		1B70E91E18FED6D00017003E /* UIView+TJBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TJBinder.h"; sourceTree = "<group>"; };
+		1B70E91F18FED6D00017003E /* UIView+TJBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TJBinder.m"; sourceTree = "<group>"; };
+		1B70E97019000F620017003E /* TJBinderLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJBinderLogger.h; sourceTree = "<group>"; };
+		1B70E971190014D10017003E /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		1B70E972190014D10017003E /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		1B70E97B19001C2D0017003E /* Fruit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fruit.h; sourceTree = "<group>"; };
+		1B70E97C19001C2D0017003E /* Fruit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fruit.m; sourceTree = "<group>"; };
+		1B70E97D19001C2D0017003E /* Fruits.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Fruits.plist; sourceTree = "<group>"; };
+		1B70E986190024D90017003E /* TJDataObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJDataObject.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B70E8DC18FED5BF0017003E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B70E8E518FED5BF0017003E /* CoreGraphics.framework in Frameworks */,
+				1B70E8E718FED5BF0017003E /* UIKit.framework in Frameworks */,
+				1B70E8E318FED5BF0017003E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B70E8D618FED5BF0017003E = {
+			isa = PBXGroup;
+			children = (
+				1B70E91718FED6D00017003E /* TJBinder */,
+				1B70E8E818FED5BF0017003E /* TJBinderExample */,
+				1B70E8E118FED5BF0017003E /* Frameworks */,
+				1B70E8E018FED5BF0017003E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B70E8E018FED5BF0017003E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B70E8DF18FED5BF0017003E /* TJBinderExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B70E8E118FED5BF0017003E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B70E8E218FED5BF0017003E /* Foundation.framework */,
+				1B70E8E418FED5BF0017003E /* CoreGraphics.framework */,
+				1B70E8E618FED5BF0017003E /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1B70E8E818FED5BF0017003E /* TJBinderExample */ = {
+			isa = PBXGroup;
+			children = (
+				1B70E97A19001C2D0017003E /* Model */,
+				1B70E8F118FED5BF0017003E /* AppDelegate.h */,
+				1B70E8F218FED5BF0017003E /* AppDelegate.m */,
+				1B70E8F418FED5BF0017003E /* Main.storyboard */,
+				1B70E971190014D10017003E /* TableViewController.h */,
+				1B70E972190014D10017003E /* TableViewController.m */,
+				1B70E8FA18FED5BF0017003E /* Images.xcassets */,
+				1B70E8E918FED5BF0017003E /* Supporting Files */,
+			);
+			path = TJBinderExample;
+			sourceTree = "<group>";
+		};
+		1B70E8E918FED5BF0017003E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B70E8EA18FED5BF0017003E /* TJBinderExample-Info.plist */,
+				1B70E8EB18FED5BF0017003E /* InfoPlist.strings */,
+				1B70E8EE18FED5BF0017003E /* main.m */,
+				1B70E8F018FED5BF0017003E /* TJBinderExample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B70E91718FED6D00017003E /* TJBinder */ = {
+			isa = PBXGroup;
+			children = (
+				1B70E986190024D90017003E /* TJDataObject.h */,
+				1B70E97019000F620017003E /* TJBinderLogger.h */,
+				1B70E91A18FED6D00017003E /* TJBinder.h */,
+				1B70E91B18FED6D00017003E /* TJBinder.m */,
+				1B70E91C18FED6D00017003E /* TJBinderKeyPathParser.h */,
+				1B70E91D18FED6D00017003E /* TJBinderKeyPathParser.m */,
+				1B70E91E18FED6D00017003E /* UIView+TJBinder.h */,
+				1B70E91F18FED6D00017003E /* UIView+TJBinder.m */,
+			);
+			name = TJBinder;
+			path = ../TJBinder;
+			sourceTree = "<group>";
+		};
+		1B70E97A19001C2D0017003E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B70E97B19001C2D0017003E /* Fruit.h */,
+				1B70E97C19001C2D0017003E /* Fruit.m */,
+				1B70E97D19001C2D0017003E /* Fruits.plist */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B70E8DE18FED5BF0017003E /* TJBinderExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B70E91118FED5BF0017003E /* Build configuration list for PBXNativeTarget "TJBinderExample" */;
+			buildPhases = (
+				1B70E8DB18FED5BF0017003E /* Sources */,
+				1B70E8DC18FED5BF0017003E /* Frameworks */,
+				1B70E8DD18FED5BF0017003E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TJBinderExample;
+			productName = TJBinderExample;
+			productReference = 1B70E8DF18FED5BF0017003E /* TJBinderExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B70E8D718FED5BF0017003E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Janos Tolgyesi";
+			};
+			buildConfigurationList = 1B70E8DA18FED5BF0017003E /* Build configuration list for PBXProject "TJBinderExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B70E8D618FED5BF0017003E;
+			productRefGroup = 1B70E8E018FED5BF0017003E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B70E8DE18FED5BF0017003E /* TJBinderExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B70E8DD18FED5BF0017003E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B70E8FB18FED5BF0017003E /* Images.xcassets in Resources */,
+				1B70E8ED18FED5BF0017003E /* InfoPlist.strings in Resources */,
+				1B70E8F618FED5BF0017003E /* Main.storyboard in Resources */,
+				1B70E97F19001C2D0017003E /* Fruits.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B70E8DB18FED5BF0017003E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B70E97E19001C2D0017003E /* Fruit.m in Sources */,
+				1B70E92118FED6D00017003E /* TJBinderKeyPathParser.m in Sources */,
+				1B70E92218FED6D00017003E /* UIView+TJBinder.m in Sources */,
+				1B70E8F318FED5BF0017003E /* AppDelegate.m in Sources */,
+				1B70E8EF18FED5BF0017003E /* main.m in Sources */,
+				1B70E973190014D10017003E /* TableViewController.m in Sources */,
+				1B70E92018FED6D00017003E /* TJBinder.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B70E8EB18FED5BF0017003E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B70E8EC18FED5BF0017003E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1B70E8F418FED5BF0017003E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B70E8F518FED5BF0017003E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B70E90F18FED5BF0017003E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1B70E91018FED5BF0017003E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B70E91218FED5BF0017003E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TJBinderExample/TJBinderExample-Prefix.pch";
+				INFOPLIST_FILE = "TJBinderExample/TJBinderExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TJBINDER_SELECTED_LOGGER = TJBINDER_LOGGER_COCOALUMBERJACK;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1B70E91318FED5BF0017003E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TJBinderExample/TJBinderExample-Prefix.pch";
+				INFOPLIST_FILE = "TJBinderExample/TJBinderExample-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TJBINDER_SELECTED_LOGGER = TJBINDER_LOGGER_COCOALUMBERJACK;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B70E8DA18FED5BF0017003E /* Build configuration list for PBXProject "TJBinderExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B70E90F18FED5BF0017003E /* Debug */,
+				1B70E91018FED5BF0017003E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B70E91118FED5BF0017003E /* Build configuration list for PBXNativeTarget "TJBinderExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B70E91218FED5BF0017003E /* Debug */,
+				1B70E91318FED5BF0017003E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B70E8D718FED5BF0017003E /* Project object */;
+}
