@@ -10,17 +10,15 @@
 		1B70E8E318FED5BF0017003E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B70E8E218FED5BF0017003E /* Foundation.framework */; };
 		1B70E8E518FED5BF0017003E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B70E8E418FED5BF0017003E /* CoreGraphics.framework */; };
 		1B70E8E718FED5BF0017003E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B70E8E618FED5BF0017003E /* UIKit.framework */; };
-		1B70E8ED18FED5BF0017003E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E8EB18FED5BF0017003E /* InfoPlist.strings */; };
 		1B70E8EF18FED5BF0017003E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E8EE18FED5BF0017003E /* main.m */; };
 		1B70E8F318FED5BF0017003E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E8F218FED5BF0017003E /* AppDelegate.m */; };
-		1B70E8F618FED5BF0017003E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E8F418FED5BF0017003E /* Main.storyboard */; };
-		1B70E8FB18FED5BF0017003E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E8FA18FED5BF0017003E /* Images.xcassets */; };
 		1B70E92018FED6D00017003E /* TJBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E91B18FED6D00017003E /* TJBinder.m */; };
 		1B70E92118FED6D00017003E /* TJBinderKeyPathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E91D18FED6D00017003E /* TJBinderKeyPathParser.m */; };
 		1B70E92218FED6D00017003E /* UIView+TJBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E91F18FED6D00017003E /* UIView+TJBinder.m */; };
-		1B70E973190014D10017003E /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E972190014D10017003E /* TableViewController.m */; };
 		1B70E97E19001C2D0017003E /* Fruit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B70E97C19001C2D0017003E /* Fruit.m */; };
 		1B70E97F19001C2D0017003E /* Fruits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E97D19001C2D0017003E /* Fruits.plist */; };
+		1BF1EF13190037CF00B9C063 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF1EF12190037CF00B9C063 /* Main.storyboard */; };
+		1BF1EF171900389D00B9C063 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1EF161900389D00B9C063 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,13 +27,10 @@
 		1B70E8E418FED5BF0017003E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1B70E8E618FED5BF0017003E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1B70E8EA18FED5BF0017003E /* TJBinderExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TJBinderExample-Info.plist"; sourceTree = "<group>"; };
-		1B70E8EC18FED5BF0017003E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B70E8EE18FED5BF0017003E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B70E8F018FED5BF0017003E /* TJBinderExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TJBinderExample-Prefix.pch"; sourceTree = "<group>"; };
 		1B70E8F118FED5BF0017003E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1B70E8F218FED5BF0017003E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1B70E8F518FED5BF0017003E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1B70E8FA18FED5BF0017003E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B70E91A18FED6D00017003E /* TJBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJBinder.h; sourceTree = "<group>"; };
 		1B70E91B18FED6D00017003E /* TJBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJBinder.m; sourceTree = "<group>"; };
 		1B70E91C18FED6D00017003E /* TJBinderKeyPathParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJBinderKeyPathParser.h; sourceTree = "<group>"; };
@@ -43,12 +38,13 @@
 		1B70E91E18FED6D00017003E /* UIView+TJBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TJBinder.h"; sourceTree = "<group>"; };
 		1B70E91F18FED6D00017003E /* UIView+TJBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TJBinder.m"; sourceTree = "<group>"; };
 		1B70E97019000F620017003E /* TJBinderLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJBinderLogger.h; sourceTree = "<group>"; };
-		1B70E971190014D10017003E /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		1B70E972190014D10017003E /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		1B70E97B19001C2D0017003E /* Fruit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fruit.h; sourceTree = "<group>"; };
 		1B70E97C19001C2D0017003E /* Fruit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fruit.m; sourceTree = "<group>"; };
 		1B70E97D19001C2D0017003E /* Fruits.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Fruits.plist; sourceTree = "<group>"; };
 		1B70E986190024D90017003E /* TJDataObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TJDataObject.h; sourceTree = "<group>"; };
+		1BF1EF12190037CF00B9C063 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1BF1EF151900389D00B9C063 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		1BF1EF161900389D00B9C063 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +93,10 @@
 			isa = PBXGroup;
 			children = (
 				1B70E97A19001C2D0017003E /* Model */,
+				1BF1EF141900389D00B9C063 /* ViewController */,
 				1B70E8F118FED5BF0017003E /* AppDelegate.h */,
 				1B70E8F218FED5BF0017003E /* AppDelegate.m */,
-				1B70E8F418FED5BF0017003E /* Main.storyboard */,
-				1B70E971190014D10017003E /* TableViewController.h */,
-				1B70E972190014D10017003E /* TableViewController.m */,
-				1B70E8FA18FED5BF0017003E /* Images.xcassets */,
+				1BF1EF12190037CF00B9C063 /* Main.storyboard */,
 				1B70E8E918FED5BF0017003E /* Supporting Files */,
 			);
 			path = TJBinderExample;
@@ -112,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				1B70E8EA18FED5BF0017003E /* TJBinderExample-Info.plist */,
-				1B70E8EB18FED5BF0017003E /* InfoPlist.strings */,
 				1B70E8EE18FED5BF0017003E /* main.m */,
 				1B70E8F018FED5BF0017003E /* TJBinderExample-Prefix.pch */,
 			);
@@ -143,6 +136,15 @@
 				1B70E97D19001C2D0017003E /* Fruits.plist */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1BF1EF141900389D00B9C063 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1BF1EF151900389D00B9C063 /* TableViewController.h */,
+				1BF1EF161900389D00B9C063 /* TableViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,10 +199,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B70E8FB18FED5BF0017003E /* Images.xcassets in Resources */,
-				1B70E8ED18FED5BF0017003E /* InfoPlist.strings in Resources */,
-				1B70E8F618FED5BF0017003E /* Main.storyboard in Resources */,
 				1B70E97F19001C2D0017003E /* Fruits.plist in Resources */,
+				1BF1EF13190037CF00B9C063 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,31 +216,12 @@
 				1B70E92218FED6D00017003E /* UIView+TJBinder.m in Sources */,
 				1B70E8F318FED5BF0017003E /* AppDelegate.m in Sources */,
 				1B70E8EF18FED5BF0017003E /* main.m in Sources */,
-				1B70E973190014D10017003E /* TableViewController.m in Sources */,
+				1BF1EF171900389D00B9C063 /* TableViewController.m in Sources */,
 				1B70E92018FED6D00017003E /* TJBinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1B70E8EB18FED5BF0017003E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B70E8EC18FED5BF0017003E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1B70E8F418FED5BF0017003E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B70E8F518FED5BF0017003E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1B70E90F18FED5BF0017003E /* Debug */ = {
@@ -316,8 +297,6 @@
 		1B70E91218FED5BF0017003E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TJBinderExample/TJBinderExample-Prefix.pch";
 				INFOPLIST_FILE = "TJBinderExample/TJBinderExample-Info.plist";
@@ -330,8 +309,6 @@
 		1B70E91318FED5BF0017003E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TJBinderExample/TJBinderExample-Prefix.pch";
 				INFOPLIST_FILE = "TJBinderExample/TJBinderExample-Info.plist";
