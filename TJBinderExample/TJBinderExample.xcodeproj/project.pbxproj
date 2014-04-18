@@ -19,6 +19,10 @@
 		1B70E97F19001C2D0017003E /* Fruits.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1B70E97D19001C2D0017003E /* Fruits.plist */; };
 		1BF1EF13190037CF00B9C063 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF1EF12190037CF00B9C063 /* Main.storyboard */; };
 		1BF1EF171900389D00B9C063 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1EF161900389D00B9C063 /* TableViewController.m */; };
+		1BF1EF1B190167AD00B9C063 /* UIImageView+TJURLLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1EF1A190167AD00B9C063 /* UIImageView+TJURLLoader.m */; };
+		1BF1EF1E190178BE00B9C063 /* TJURLOpenerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1EF1D190178BE00B9C063 /* TJURLOpenerButton.m */; };
+		1BF1EF21190179E700B9C063 /* UIButton+TJBinderHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF1EF20190179E700B9C063 /* UIButton+TJBinderHelpers.m */; };
+		1BF1EF2319017C6A00B9C063 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BF1EF2219017C6A00B9C063 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,13 @@
 		1BF1EF12190037CF00B9C063 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1BF1EF151900389D00B9C063 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		1BF1EF161900389D00B9C063 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		1BF1EF19190167AD00B9C063 /* UIImageView+TJURLLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+TJURLLoader.h"; sourceTree = "<group>"; };
+		1BF1EF1A190167AD00B9C063 /* UIImageView+TJURLLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+TJURLLoader.m"; sourceTree = "<group>"; };
+		1BF1EF1C190178BE00B9C063 /* TJURLOpenerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJURLOpenerButton.h; sourceTree = "<group>"; };
+		1BF1EF1D190178BE00B9C063 /* TJURLOpenerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJURLOpenerButton.m; sourceTree = "<group>"; };
+		1BF1EF1F190179E700B9C063 /* UIButton+TJBinderHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TJBinderHelpers.h"; sourceTree = "<group>"; };
+		1BF1EF20190179E700B9C063 /* UIButton+TJBinderHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TJBinderHelpers.m"; sourceTree = "<group>"; };
+		1BF1EF2219017C6A00B9C063 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,11 +103,13 @@
 		1B70E8E818FED5BF0017003E /* TJBinderExample */ = {
 			isa = PBXGroup;
 			children = (
+				1BF1EF181901381A00B9C063 /* Utils */,
 				1B70E97A19001C2D0017003E /* Model */,
 				1BF1EF141900389D00B9C063 /* ViewController */,
 				1B70E8F118FED5BF0017003E /* AppDelegate.h */,
 				1B70E8F218FED5BF0017003E /* AppDelegate.m */,
 				1BF1EF12190037CF00B9C063 /* Main.storyboard */,
+				1BF1EF2219017C6A00B9C063 /* Images.xcassets */,
 				1B70E8E918FED5BF0017003E /* Supporting Files */,
 			);
 			path = TJBinderExample;
@@ -145,6 +158,19 @@
 				1BF1EF161900389D00B9C063 /* TableViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1BF1EF181901381A00B9C063 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1BF1EF1C190178BE00B9C063 /* TJURLOpenerButton.h */,
+				1BF1EF1D190178BE00B9C063 /* TJURLOpenerButton.m */,
+				1BF1EF19190167AD00B9C063 /* UIImageView+TJURLLoader.h */,
+				1BF1EF1A190167AD00B9C063 /* UIImageView+TJURLLoader.m */,
+				1BF1EF1F190179E700B9C063 /* UIButton+TJBinderHelpers.h */,
+				1BF1EF20190179E700B9C063 /* UIButton+TJBinderHelpers.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF1EF2319017C6A00B9C063 /* Images.xcassets in Resources */,
 				1B70E97F19001C2D0017003E /* Fruits.plist in Resources */,
 				1BF1EF13190037CF00B9C063 /* Main.storyboard in Resources */,
 			);
@@ -214,7 +241,10 @@
 				1B70E97E19001C2D0017003E /* Fruit.m in Sources */,
 				1B70E92118FED6D00017003E /* TJBinderKeyPathParser.m in Sources */,
 				1B70E92218FED6D00017003E /* UIView+TJBinder.m in Sources */,
+				1BF1EF1B190167AD00B9C063 /* UIImageView+TJURLLoader.m in Sources */,
 				1B70E8F318FED5BF0017003E /* AppDelegate.m in Sources */,
+				1BF1EF21190179E700B9C063 /* UIButton+TJBinderHelpers.m in Sources */,
+				1BF1EF1E190178BE00B9C063 /* TJURLOpenerButton.m in Sources */,
 				1B70E8EF18FED5BF0017003E /* main.m in Sources */,
 				1BF1EF171900389D00B9C063 /* TableViewController.m in Sources */,
 				1B70E92018FED6D00017003E /* TJBinder.m in Sources */,
@@ -297,9 +327,12 @@
 		1B70E91218FED5BF0017003E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TJBinderExample/TJBinderExample-Prefix.pch";
 				INFOPLIST_FILE = "TJBinderExample/TJBinderExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TJBINDER_SELECTED_LOGGER = TJBINDER_LOGGER_COCOALUMBERJACK;
 				WRAPPER_EXTENSION = app;
@@ -309,9 +342,12 @@
 		1B70E91318FED5BF0017003E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TJBinderExample/TJBinderExample-Prefix.pch";
 				INFOPLIST_FILE = "TJBinderExample/TJBinderExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TJBINDER_SELECTED_LOGGER = TJBINDER_LOGGER_COCOALUMBERJACK;
 				WRAPPER_EXTENSION = app;

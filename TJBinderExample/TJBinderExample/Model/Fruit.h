@@ -42,7 +42,7 @@
  */
 +(NSArray*)fruitsFromArray:(NSArray*)array;
 
-@property (strong, nonatomic) NSString* name;
+@property (strong) NSString* name;
 
 /**
  Must be a color name supported by UIColor presets (black, darkGray, lightGray,
@@ -55,5 +55,13 @@
  Derived property containing the color parsed from colorName
  */
 @property (readonly) UIColor* color;
+
+@property (strong, nonatomic) NSString* imageURLString;
+@property (readonly) NSURL* imageURL;
+
+@property (strong) NSString* imageLicense;
+
+@property (strong, nonatomic) NSString* imageLicenseURLString;
+@property (readonly) NSURL* imageLicenseURL;
 
 @end

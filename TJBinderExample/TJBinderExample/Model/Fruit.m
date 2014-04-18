@@ -11,6 +11,8 @@
 @interface Fruit ()
 {
     UIColor* _color;
+    NSURL* _imageURL;
+    NSURL* _imageLicenseURL;
 }
 
 @end
@@ -45,6 +47,12 @@
 
 #pragma mark Custom property setters
 
+-(void)setColorName:(NSString *)colorName
+{
+    _colorName = colorName;
+    _color = nil;
+}
+
 -(UIColor *)color
 {
     if (!_color)
@@ -59,11 +67,46 @@
     return _color;
 }
 
+-(void)setImageURLString:(NSString *)imageURLString
+{
+    _imageURLString = imageURLString;
+    _imageURL = nil;
+}
+
+-(NSURL *)imageURL
+{
+    if (!_imageURL)
+    {
+        _imageURL = [NSURL URLWithString:self.imageURLString];
+    }
+    return _imageURL;
+}
+
+-(void)setImageLicenseURLString:(NSString *)imageLicenseURLString
+{
+    _imageLicenseURLString = imageLicenseURLString;
+    _imageLicenseURL = nil;
+}
+
+-(NSURL *)imageLicenseURL
+{
+    if (!_imageLicenseURL)
+    {
+        _imageLicenseURL = [NSURL URLWithString:self.imageLicenseURLString];
+    }
+    return _imageLicenseURL;
+}
+
 #pragma mark NSObject overrides
 
 +(NSSet *)keyPathsForValuesAffectingColor
 {
     return [NSSet setWithArray:@[@"colorName"]];
+}
+
++(NSSet *)keyPathsForValuesAffectingImageURL
+{
+    return [NSSet setWithArray:@[@"imageURLString"]];
 }
 
 -(NSString *)description

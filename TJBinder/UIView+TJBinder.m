@@ -27,7 +27,6 @@
 -(void)setBindTo:(TJBinder *)bindTo
 {
     objc_setAssociatedObject(self, @selector(bindTo), bindTo, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
 }
 
 -(NSString *)shortDescription

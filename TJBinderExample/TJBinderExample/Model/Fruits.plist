@@ -7,48 +7,96 @@
 		<string>Apple</string>
 		<key>colorName</key>
 		<string>red</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/661px-Red_Apple.jpg</string>
+		<key>imageLicense</key>
+		<string>By Abhijit Tembhekar</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/by/2.0</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Kiwi</string>
 		<key>colorName</key>
 		<string>green</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kiwi_%28Actinidia_chinensis%29_2_Luc_Viatour.jpg/800px-Kiwi_%28Actinidia_chinensis%29_2_Luc_Viatour.jpg</string>
+		<key>imageLicense</key>
+		<string>By Luc Viatour</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Banana</string>
 		<key>colorName</key>
 		<string>yellow</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bananas.jpg/800px-Bananas.jpg</string>
+		<key>imageLicense</key>
+		<string>By Steve Hopson</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/by-sa/3.0</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Blueberry</string>
 		<key>colorName</key>
 		<string>blue</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/b/b0/Blueberries_in_market%2C_close-up.jpg</string>
+		<key>imageLicense</key>
+		<string>By atul666</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/by-sa/2.0</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Orange</string>
 		<key>colorName</key>
 		<string>orange</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Orange_ungesch%C3%A4ltl.JPG/800px-Orange_ungesch%C3%A4ltl.JPG</string>
+		<key>imageLicense</key>
+		<string>By 3268zauber</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/by-sa/3.0</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Dragon fruit</string>
 		<key>colorName</key>
 		<string>magenta</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/8/89/Rixford_fruit_cut_open_august_2010.JPG</string>
+		<key>imageLicense</key>
+		<string>By Mattslandscape</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/publicdomain/</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Plum</string>
 		<key>colorName</key>
 		<string>purple</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Fruits_Prunus_domestica.jpg/800px-Fruits_Prunus_domestica.jpg</string>
+		<key>imageLicense</key>
+		<string>By YAMAMAYA</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/by-sa/3.0</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Nut</string>
 		<key>colorName</key>
 		<string>brown</string>
+		<key>imageURLString</key>
+		<string>http://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Orechy_4.jpg/578px-Orechy_4.jpg</string>
+		<key>imageLicense</key>
+		<string>By J.Dncsn</string>
+		<key>imageLicenseURLString</key>
+		<string>http://creativecommons.org/licenses/by-sa/3.0</string>
 	</dict>
 </array>
 </plist>
