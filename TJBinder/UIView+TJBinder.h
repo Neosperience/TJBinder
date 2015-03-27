@@ -6,10 +6,11 @@
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
+#import "TJDataObject.h"
+
 #import <UIKit/UIKit.h>
 
-#import "TJBinder.h"
-#import "TJDataObject.h"
+@class TJBinder;
 
 @interface UIView (TJBinder) <TJDataObject>
 

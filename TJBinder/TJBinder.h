@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Neosperience SpA. All rights reserved.
 //
 
+#import "UIView+TJBinder.h"
+
 #import <Foundation/Foundation.h>
 
 @interface TJBinder : NSObject
