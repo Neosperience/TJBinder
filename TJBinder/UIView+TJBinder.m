@@ -9,6 +9,7 @@
 #import <objc/runtime.h>
 
 #import "UIView+TJBinder.h"
+#import "TJBinder.h"
 
 @implementation UIView (TJBinder)
 
