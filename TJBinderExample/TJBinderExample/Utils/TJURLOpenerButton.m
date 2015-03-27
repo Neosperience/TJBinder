@@ -48,4 +48,13 @@
     }
 }
 
+-(CGSize)intrinsicContentSize
+{
+    if ([[self titleForState:UIControlStateNormal] length] == 0) {
+        return CGSizeMake(UIViewNoIntrinsicMetric, 0.0f);
+    } else {
+        return [super intrinsicContentSize];
+    }
+}
+
 @end

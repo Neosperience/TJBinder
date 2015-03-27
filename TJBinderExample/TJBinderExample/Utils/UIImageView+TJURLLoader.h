@@ -12,6 +12,17 @@
 
 -(void)setURL:(NSURL *)URL;
 
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint* aspectRatioConstraint;
+@property (nonatomic, weak) NSLayoutConstraint* aspectRatioConstraint;
+
+@property (nonatomic, assign) BOOL addAspectRatioConstraint;
+
+@end
+
+@interface TJImageCache : NSCache
+
++ (instancetype)sharedInstance;
+
+- (void)setImage:(UIImage *)image forURL:(NSURL *)url;
+- (UIImage *)imageForURL:(NSURL *)url;
 
 @end
