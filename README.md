@@ -91,7 +91,7 @@ or as a User-Defined Build Setting of your target in your XCode project. To do s
 How to use TJBinder
 -------------------
 
-Unlike other libraries, using `TJBinder` does not require you to write a single line of new code. In contrary most likely you will have to _delete_ some parts of your old code because `TJBinder` will do the job instead of you. 
+Unlike other libraries, using `TJBinder` does not require you to write a single line of new code. Contrarily you might have to _delete_ some parts of your old code because `TJBinder` will do the job instead of you. 
 
 Let's suppose you have the following data model:
 
@@ -150,7 +150,7 @@ You want to write a view controller with a `UILabel` that shows the name of the 
 
 The rest of the stuff you can do right in Interface Builder this way:
 
-![screenshot](https://docs.google.com/uc?export=view&id=0B6Yqko2ker3uMHJ0SDZzZ0d4LUE)
+![screenshot](/Images/TJBinder-Fruit-IB.png?raw=true "Using TJBinder in Interface Builder")
 
 There are two important things to note here:
 
@@ -166,7 +166,7 @@ Advanced usage
 
 **Table views and collection views**
 
-`TJBinder` works excellently also with table views and collection views. You need to specify the data objects for the cell and the bindings of the UI elements of the cell. `TJBinder` provides you two convenience implementations of `UITableViewDataSource` and `UICollectionViewDataSource`, one for `NSArray` based data model and one for Core Data backed data models via `NSFetchedResultsController`. You will find more details in the example applications on how to utilize these classes together with `TJBinder`.
+`TJBinder` works excellently also with table views and collection views. You need to specify the data objects for the cell and the bindings of the UI elements of the cell. You can find more details in the example application on how to utilize these classes together with `TJBinder`.
 
 **Data objects updating over time**
 
@@ -217,17 +217,17 @@ Key path operator reference
 
 You will find more useful however the key path operators defined by `TJBinder` to simplify the traversing of the view hierarchy. These operators are prefixed by the `@` character and allows you to jump to another view in the view hierarchy. Here are a reference table for all key path operators:
 
-| Key path operator             | Argument                     | Example                                | Description                                                                                                                                                                                                                                                                           |
-|-------------------------------|------------------------------|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `@superview`                  | none                         | `@superview`                           | Alias to `superview`: returns the parent view                                                                                                                                                                                                                                         |
-| `@rootview`                   | none                         | `@rootview`                            | Traverses the view hierarchy up calling superview on each view until it finds a view that does not have a superview. *Attention*: if you use container views for showing embedded view controllers the root view might be different from the `view` property of your view controller. |
-| `@superviewWithTag[12]`       | view tag (int)               | `@superviewWithTag[12]`                | Traverses the view hierarchy up calling superview on each view until it finds a superview with the specified tag. This example returns the closes superview with `tag == 12`                                                                                                          |
-| `@superviewWithRestorationID` | view restoration id (string) | `@superviewWithRestorationID[myID]`    | Traverses the view hierarchy up calling superview on each view until it finds a superview with the specified restoration ID. This example returns the closes superview with `restorationIdentifier == myID`.                                                                          |
-| `@superviewWithClass`         | class name (string)          | `@superviewWithClass[UITableViewCell]` | Traverses the view hierarchy up calling superview on each view until it finds a superview with the specified class. This example returns the superview that inherits from `UITableViewCell`. Probably the most useful key path operator.                                              |
-| `@subviews`                   | subview index (int)          | `@subviews[2]`                         | Returns the element from the `subviews` array of the view at the specified index. This example returns the 3rd element from the `subviews` array.                                                                                                                                     |
-| `@subviewWithTag`             | view tag (int)               | `@subviewWithTag[12]`                  | Finds and returns the element from the `subviews` array of the view with the specified tag. This example returns the subview with `tag == 12`.                                                                                                                                        |
-| `@subviewWithRestorationID`   | view restoration id (string) | `@subviewWithRestorationID[myID]`      | Finds and returns the element from the `subviews` array of the view with the specified restoration identifier. This example returns the subview with `restorationIdentifier == 12`.                                                                                                   |
-| `@subviewWithClass`           | class name (string)          | `@subviewWithClass[UILabel]`           | Finds and returns the first element from the `subviews` array of the view that is an instance of the specified class. This example returns the first `UILabel` from the `subviews` array.                                                                                             |
+| Example                                | Argument                     | Description                                                                                                                                                                                                                                                                           |
+|----------------------------------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `@superview`                           | none                         | Alias to `superview`: returns the parent view                                                                                                                                                                                                                                         |
+| `@rootview`                            | none                         | Traverses up the view hierarchy until it finds a view that does not have a superview. *Attention*: if you use container views for showing embedded view controllers the root view might be different from the `view` property of your view controller.                                |
+| `@superviewWithTag[12]`                | view tag (int)               | Traverses up the view hierarchy until it finds a superview with the specified tag. This example returns the closes superview with `tag == 12`                                                                                                                                         |
+| `@superviewWithRestorationID[myUd]`    | view restoration id (string) | Traverses up the view hierarchy until it finds a superview with the specified restoration ID. This example returns the closes superview with `restorationIdentifier == myID`.                                                                                                         |
+| `@superviewWithClass[UITableViewCell]` | class name (string)          | Traverses up the view hierarchy until it finds a superview with the specified class. This example returns the superview that inherits from `UITableViewCell`. Probably the most useful key path operator.                                                                             |
+| `@subviews[2]`                         | subview index (int)          | Returns the element from the `subviews` array of the view at the specified index. This example returns the 3rd element from the `subviews` array.                                                                                                                                     |
+| `@subviewWithTag[12]`                  | view tag (int)               | Finds and returns the element from the `subviews` array of the view with the specified tag. This example returns the subview with `tag == 12`.                                                                                                                                        |
+| `@subviewWithRestorationID[myId]`      | view restoration id (string) | Finds and returns the element from the `subviews` array of the view with the specified restoration identifier. This example returns the subview with `restorationIdentifier == 12`.                                                                                                   |
+| `@subviewWithClass[UILabel]`           | class name (string)          | Finds and returns the first element from the `subviews` array of the view that is an instance of the specified class. This example returns the first `UILabel` from the `subviews` array.                                                                                             |
 
 
   [1]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaBindings/ "Cocoa bindings"
