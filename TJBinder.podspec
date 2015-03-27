@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
                    without you having to write a lot of glue code."
                    DESC
 
-  s.homepage     = "https://bitbucket.org/neosperience/ios-data-view-binder"
+  s.homepage     = "https://github.com/Neosperience/TJBinder"
 
   s.license      = { :type => "MIT", :file => "LICENSE" }
   
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "6.0"
 
-  s.source       = { :git => "https://bitbucket.org/neosperience/ios-data-view-binder.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/Neosperience/TJBinder.git", :tag => "0.0.1" }
 
   s.frameworks   = "Foundation", "UIKit"
 
