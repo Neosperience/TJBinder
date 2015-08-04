@@ -12,12 +12,7 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "TJBinder is a lightweight but still powerful iOS implementation Cocoa bindings."
 
-  s.description  = <<-DESC
-                   TJBinder is a lightweight but still powerful iOS implementation of the model -- view 
-                   binding technology seen in Cocoa bindings for OS-X. The aim is the same: to create 
-                   a "technology that provide a means of keeping model and view values synchronized 
-                   without you having to write a lot of glue code."
-                   DESC
+  s.description  = "TJBinder is a lightweight but still powerful iOS implementation of the model -- view binding technology seen in Cocoa bindings for OS-X. The aim is the same: to create a "technology that provide a means of keeping model and view values synchronized without you having to write a lot of glue code."
 
   s.homepage     = "https://github.com/Neosperience/TJBinder"
 
