@@ -29,17 +29,17 @@ but until today it was available only for OS-X developers. It is called [Cocoa b
 Installation
 ------------
 
-The preferred way of installing `TJBinder` is via [Cocoapods][5]. You can add the dependency to TJBinder in your `Podfile`:
+The preferred way of installing `TJBinder` is via [CocoaPods][5]. You can add the dependency to TJBinder in your `Podfile`:
 
 ```
 pod 'TJBinder'
 ```
 
-If you do not want to use Cocoapods you can simply download all files from the `TJBinder` folder and add them to your project.
+If you do not want to use CocoaPods you can simply download all files from the `TJBinder` folder and add them to your project.
 
 `TJBinder` allows you to use your favourit logger. Currently no logging, `NSLog` and [CocoaLumberjack][6] is supported.
 
-### Selecting logger using Cocoapods ###
+### Selecting logger using CocoaPods ###
 
 You should specify your logger preference directly in your `Podfile` via `post_install` hooks. For example if you want to use CocoaLumberjack you could create a `Podfile` like this:
 ```
@@ -78,9 +78,9 @@ If you use CocoaLumberjack do not forget to define the `ddLogLevel` global varia
 const int ddLogLevel = LOG_LEVEL_VERBOSE;
 ```
 
-### Selecting logger without Cocoapods ###
+### Selecting logger without CocoaPods ###
 
-If you do not use Cocoapods you should select the logger defining a `TJBINDER_SELECTED_LOGGER` macro to one of the logger options above (`TJBINDER_LOGGER_NOLOG`, `TJBINDER_LOGGER_NSLOG` or `TJBINDER_LOGGER_COCOALUMBERJACK`). If you do not define this macro it will default to `TJBINDER_LOGGER_NOLOG`. You could do this definition in the `MyProject-Prefix.pch` file of your project:
+If you do not use CocoaPods you should select the logger defining a `TJBINDER_SELECTED_LOGGER` macro to one of the logger options above (`TJBINDER_LOGGER_NOLOG`, `TJBINDER_LOGGER_NSLOG` or `TJBINDER_LOGGER_COCOALUMBERJACK`). If you do not define this macro it will default to `TJBINDER_LOGGER_NOLOG`. You could do this definition in the `MyProject-Prefix.pch` file of your project:
 
 ```
 #define TJBINDER_SELECTED_LOGGER TJBINDER_LOGGER_COCOALUMBERJACK
