@@ -86,7 +86,7 @@ If you do not use CocoaPods you should select the logger defining a `TJBINDER_SE
 #define TJBINDER_SELECTED_LOGGER TJBINDER_LOGGER_COCOALUMBERJACK
 ```
 
-or as a User-Defined Build Setting of your target in your XCode project. To do so select: project file in XCode > Build target > Build Settings > click on the `+` icon in the header > Add User-Defined Setting > set the name of the setting to `TJBINDER_SELECTED_LOGGER` and the value to your preference, for example `TJBINDER_LOGGER_COCOALUMBERJACK`.
+or as a User-Defined Build Setting of your target in your Xcode project. To do so select: project file in Xcode > Build target > Build Settings > click on the `+` icon in the header > Add User-Defined Setting > set the name of the setting to `TJBINDER_SELECTED_LOGGER` and the value to your preference, for example `TJBINDER_LOGGER_COCOALUMBERJACK`.
 
 How to use TJBinder
 -------------------
