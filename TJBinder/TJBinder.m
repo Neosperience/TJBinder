@@ -245,6 +245,14 @@
                 NSAssert(matchingViewIndex != NSNotFound, @"No subview found with class: '%@'", argument);
                 return view.subviews[matchingViewIndex];
             }],
+
+            [TJBinderKeyPathParser parserWithFunction:@"@cell" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent) {
+                UIView* currentView = view.superview;
+                while (currentView && (![currentView isKindOfClass:[UITableViewCell class]] && ![currentView isKindOfClass:[UICollectionViewCell class]]))
+                    currentView = currentView.superview;
+                NSAssert(currentView, @"No superview found with class UITableViewCell or UICollectionViewCell");
+                return currentView;
+            }],
             
             [TJBinderKeyPathParser parserWithFunction:@"*" withTransformerBlock:^UIView *(UIView *view, NSString *originalKeyPathComponent)
             {
