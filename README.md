@@ -42,28 +42,29 @@ If you do not want to use CocoaPods you can simply download all files from the `
 ### Selecting logger using CocoaPods ###
 
 You should specify your logger preference directly in your `Podfile` via `post_install` hooks. For example if you want to use CocoaLumberjack you could create a `Podfile` like this:
+
 ```
-platform :ios, '6.0'
-
-pod 'TJBinder'
-pod 'CocoaLumberjack'
-
-# available loggers:
-# - TJBINDER_LOGGER_NOLOG
-# - TJBINDER_LOGGER_NSLOG
-# - TJBINDER_LOGGER_COCOALUMBERJACK
-
-selectedLogger = 'TJBINDER_LOGGER_COCOALUMBERJACK'
-
-post_install do |installer|
-  target = installer.project.targets.find{|t| t.to_s == "Pods-TJBinder"}
-    target.build_configurations.each do |config|
+    platform :ios, '6.0'
+    
+    pod 'TJBinder'
+    pod 'CocoaLumberjack'
+    
+    # available loggers:
+    # - TJBINDER_LOGGER_NOLOG
+    # - TJBINDER_LOGGER_NSLOG
+    # - TJBINDER_LOGGER_COCOALUMBERJACK
+    
+    selectedLogger = 'TJBINDER_LOGGER_COCOALUMBERJACK'
+    
+    post_install do |installer|
+      target = installer.project.targets.find{|t| t.to_s == "Pods-TJBinder"}
+      target.build_configurations.each do |config|
         s = config.build_settings['GCC_PREPROCESSOR_DEFINITIONS']
         s = [ '$(inherited)' ] if s == nil;
         s.push("TJBINDER_SELECTED_LOGGER=#{selectedLogger}") if config.to_s == "Debug";
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] = s
+      end
     end
-end
 ```
 
 You should specify the dependency to the `pod` of CocoaLumberjack and add set the `selectedLogger` variable to `TJBINDER_LOGGER_COCOALUMBERJACK`. You also should copy the `post_install` hook above to your `Podfile`. You can specify `selectedLogger` to one of the following options:
@@ -168,10 +169,6 @@ Advanced usage
 
 `TJBinder` works excellently also with table views and collection views. You need to specify the data objects for the cell and the bindings of the UI elements of the cell. You can find more details in the example application on how to utilize these classes together with `TJBinder`.
 
-**Data objects updating over time**
-
-Sometimes your data objects might update their contents over time. They can represent the GPS coordinate of the device or you might want to implement a counter or a clock. Once your bindings between your view objects and the data object are correctly configured, `TJBinder` will automatically update your view when the data objects change.
-
 Defining bindings
 -----------------
 
@@ -192,7 +189,7 @@ You should insert the key path constructed this way to the "Key Path" column of 
 How does it work?
 -----------------
 
-`TJBinder` heavily uses the [Key-Value Observering][7] technology provided by iOS and OS-X. Key-Value Observing "allows objects to be notified of changes to specified properties of other objects". `TJBinder` adds a category on  `UIView` that defines the `bindTo` property that is the entry point for `TJBinder`. If you add "User Defined Runtime Attributes" to a view object in Interface Builder then at runtime, when the view is instantiated, IB will call the setter or getter method of these properties of your view via Key-Value Coding. 
+`TJBinder` adds a category on  `UIView` that defines the `bindTo` property that is the entry point for `TJBinder`. If you add "User Defined Runtime Attributes" to a view object in Interface Builder then at runtime, when the view is instantiated, IB will call the setter or getter method of these properties of your view via Key-Value Coding. 
 
 Specifying `bindTo` as the first element of the key path will cause the `bindTo` method to be called right after the `UIView` object is instantiated and configured by Interface Builder. `bindTo` will create an associated object for the view with the type of `BindProxy` where the rest of the binding mechanism is implemented.
 
@@ -200,14 +197,11 @@ The successive elements of the key path defined by you in IB will be evaluated b
 
 `dataObject` is another property defined by the `UIView` category and it simple allows to store a named Objective-C `id` object associated with a view. You set this object on the view in the view controller. When `TJBinder` has found the `dataObject` it continues the traverse on the key path of the data object until it founds the leaf property defined by the last element of the key path. 
 
-`BindProxy` subscribes as an observer of the leaf property of the `dataObject` so the Objective-C runtime will notify `BindProxy` every time the property changes value. `BindProxy` will handle this notification extracting the value of the property and updating the associated `UIView` property with its value.
-
 Limitations
 -----------
 
 Due to the nature of Key-Value Coding `TJBinder` and the compiler can not check the existence of the properties and the validity of the key path defined by you at compile time. If you receive "this class is not key value coding-compliant for the key ..." exceptions at runtime, double-check the key path you entered in Interface Builder paying particular attention to:
 
- - All key path elements you define both for the view as for the data object have to be key-value observable. This is true for most of `@properties` defined by you or by other APIs, but for other methods it won't work. For example if your data object is an `NSArray` then the key path `dataObject.lastObject` will not work.
  - When you define a binding `TJBinder` will not check whether the type of the leaf property of the data object matches the property of the view. You should ensure this yourself. For example if `TJBinder` finds a `UIColor` object in the property of the data object it will try to assign it to the property of the view object even if it has a different type. This can cause a series of hard-to-debug bugs, including "unrecognized selector sent to instance" exceptions, `EXC_BAD_ACCESS` signals, or even worse, silent failing. Always check the type matching of your bindings.
 
 Key path operator reference
@@ -237,4 +231,3 @@ You will find more useful however the key path operators defined by `TJBinder` t
   [4]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CocoaBindings/ "Cocoa bindings"
   [5]: http://cocoapods.org
   [6]: https://github.com/CocoaLumberjack/CocoaLumberjack
-  [7]: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html

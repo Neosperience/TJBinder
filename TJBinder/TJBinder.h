@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic) id dataObject;
 
+-(void)updateView;
+
 @end

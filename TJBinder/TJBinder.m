@@ -76,46 +76,18 @@
     return self;
 }
 
--(void)setDataObject:(id)dataObject
-{
-    [self unregisterBindings];
-    _dataObject = dataObject;
-    [self registerBindings];
-}
-
--(void)dealloc
-{
-    [self unregisterBindings];
-}
-
--(void)unregisterBindings
+-(void)updateView
 {
     for (TJBindEntry* entry in self.bindings)
     {
-        if (entry.registered)
-        {
-            TJBinderLogDebug(@"dataObject: %@ unregistering entry: { %@ }", self.dataObject, entry);
-            [self.dataObject removeObserver:self forKeyPath:entry.dataObjectKeyPath context:(__bridge void *)(entry)];
-            entry.registered = NO;
-        }
-        else
-        {
-            TJBinderLogDebug(@"dataObject: %@ NOT unregistering entry: { %@ }", self.dataObject, entry);
-        }
-    }
-}
-
--(void)registerBindings
-{
-    if (!self.dataObject) return;
-
-    for (TJBindEntry* entry in self.bindings)
-    {
-        [self.dataObject addObserver:self forKeyPath:entry.dataObjectKeyPath options:NSKeyValueObservingOptionNew context:(__bridge void *)(entry)];
-        entry.registered = YES;
-        TJBinderLogDebug(@"dataObject: %@, registered entry: { %@ }", self.dataObject, entry);
         [self updateViewForBindingEntry:entry];
     }
+}
+
+-(void)setDataObject:(id)dataObject
+{
+    _dataObject = dataObject;
+    [self updateView];
 }
 
 -(void)resetKeyPath

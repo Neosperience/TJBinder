@@ -20,4 +20,6 @@
 
 -(NSString*)shortDescription;
 
+-(void)updateFromDataObject;
+
 @end
